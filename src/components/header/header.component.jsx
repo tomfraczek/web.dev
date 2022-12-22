@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import { isMobile } from "../../theme/media";
 
 import { Button } from "../button";
 import { MainLogo } from "../mainLogo";
+import { SwitchLng } from "../switchLng";
 
 import { HeaderComponent, MenuContainer, MenuItem } from "./header.styles";
 
 import { Container } from "../../theme/global-styles";
 
 const HEADER_NAVIGATION = [
-  {
-    title: "Home",
-    url: "/",
-  },
   {
     title: "About",
     url: "/about",
@@ -24,7 +23,7 @@ const HEADER_NAVIGATION = [
 ];
 
 export const Header = () => {
-  console.log(isMobile());
+  const { t } = useTranslation();
   return (
     <Container>
       <HeaderComponent>
@@ -36,7 +35,8 @@ export const Header = () => {
                 <Link to={url}>{title}</Link>
               </MenuItem>
             ))}
-            <Button>Contact Us</Button>
+            <SwitchLng />
+            <Button>{t("links.contact")}</Button>
           </MenuContainer>
         )}
       </HeaderComponent>

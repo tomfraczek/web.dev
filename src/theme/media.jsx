@@ -63,7 +63,6 @@ const size = {
 
 export const isMobile = () => {
   const width = getWindowWidth();
-  console.log(width, size.tablet);
   return width < size.tablet;
 };
 

@@ -1,3 +1,5 @@
+import { useTranslation, Trans } from "react-i18next";
+
 import { Button } from "../button/button.component";
 import { WordCarousel } from "../wordCarousel";
 
@@ -15,22 +17,21 @@ import {
 } from "./hero.styles";
 
 export const Hero = () => {
+  const { t } = useTranslation();
   return (
     <HeroContainer>
       <ContentContainer>
         <ContentHeader>
-          We can help <br /> <BlueHighlight>you</BlueHighlight> <WordCarousel />
-          <br />
-          your website
+          <Trans components={{ highlight: <BlueHighlight /> }}>
+            hero.header.part1
+          </Trans>
+          <WordCarousel />
+          {t("hero.header.part2")}
         </ContentHeader>
-        <ContentDescription>
-          Storyblok is the headless content management system that empowers
-          99,000 + developers and content teams to create better content
-          experiences across any digital channel.
-        </ContentDescription>
+        <ContentDescription>{t("hero.description")}</ContentDescription>
         <CtaContainer>
-          <Button secondary>Check the Offer</Button>
-          <Button>Contact Us</Button>
+          <Button secondary>{t("links.check_offer")}</Button>
+          <Button>{t("links.contact")}</Button>
         </CtaContainer>
       </ContentContainer>
 

@@ -16,6 +16,7 @@ export const ContentContainer = styled.div`
 export const ContentHeader = styled.h1`
   font-size: 3.625rem;
   margin: 0 0 27px;
+  white-space: pre-line;
 `;
 
 export const ContentDescription = styled.p`

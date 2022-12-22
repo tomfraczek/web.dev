@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import cx from "classnames";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { useTranslation } from "react-i18next";
 
 import styles from "./wordCarousel.module.scss";
 
 export const WordCarousel = () => {
   const [current, setCurrent] = useState(0);
+  const { t } = useTranslation();
+  const nodeRef = useRef(null);
 
-  const translations = [
-    { text: "grow", alphabet: "latin" },
-    { text: "build", alphabet: "latin" },
-    { text: "host", alphabet: "latin" },
-    { text: "maintain", alphabet: "latin" },
+  const words = [
+    { text: t("word_carousel.grow"), alphabet: "latin" },
+    { text: t("word_carousel.build"), alphabet: "latin" },
+    { text: t("word_carousel.host"), alphabet: "latin" },
+    { text: t("word_carousel.maintain"), alphabet: "latin" },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((current) => (current + 1) % translations.length);
+      setCurrent((current) => (current + 1) % words.length);
     }, 4000);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [words.length]);
 
   return (
     <span className={styles.root}>
@@ -38,11 +41,11 @@ export const WordCarousel = () => {
         >
           <div
             className={cx({
-              [styles["arabic"]]: translations[current].alphabet === "arabic",
-              [styles["chinese"]]: translations[current].alphabet === "chinese",
+              [styles["arabic"]]: words[current].alphabet === "arabic",
+              [styles["chinese"]]: words[current].alphabet === "chinese",
             })}
           >
-            {translations[current].text}
+            {words[current].text}
           </div>
         </CSSTransition>
       </SwitchTransition>
