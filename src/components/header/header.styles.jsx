@@ -2,19 +2,23 @@ import styled from "styled-components";
 
 export const HeaderComponent = styled.div`
   width: 100%;
-  heioght: 6.6rem;
+  height: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const LogoContainer = styled.div``;
+export const MenuContainer = styled.div`
+  display: flex;
+  align-items: center;
 
-export const Logo = styled.h1``;
-
-export const MenuContainer = styled.ul`
-  dosplay: flex;
-  align: items center;
+  a {
+    &:hover {
+      color: #457b9d;
+    }
+  }
 `;
 
-export const MenuItem = styled.li``;
+export const MenuItem = styled.span`
+  margin-right: 3rem;
+`;

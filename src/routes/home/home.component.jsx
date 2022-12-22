@@ -1,3 +1,9 @@
+import { Container } from "../../theme/global-styles";
+import { Hero } from "../../components/hero/hero.component";
 export const Home = () => {
-  return <div>Home.component</div>;
+  return (
+    <Container>
+      <Hero />
+    </Container>
+  );
 };

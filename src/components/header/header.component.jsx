@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
+import { isMobile } from "../../theme/media";
 
-import {
-  HeaderComponent,
-  LogoContainer,
-  Logo,
-  MenuContainer,
-  MenuItem,
-} from "./header.styles";
+import { Button } from "../button";
+import { MainLogo } from "../mainLogo";
+
+import { HeaderComponent, MenuContainer, MenuItem } from "./header.styles";
+
+import { Container } from "../../theme/global-styles";
 
 const HEADER_NAVIGATION = [
   {
@@ -21,26 +21,25 @@ const HEADER_NAVIGATION = [
     title: "Offer",
     url: "/offer",
   },
-  {
-    title: "Contact",
-    url: "/contact",
-  },
 ];
 
 export const Header = () => {
+  console.log(isMobile());
   return (
-    <HeaderComponent>
-      <LogoContainer>
-        <Logo>web.dev</Logo>
-      </LogoContainer>
-
-      <MenuContainer>
-        {HEADER_NAVIGATION.map(({ title, url }) => (
-          <MenuItem>
-            <Link to={url}>{title}</Link>
-          </MenuItem>
-        ))}
-      </MenuContainer>
-    </HeaderComponent>
+    <Container>
+      <HeaderComponent>
+        <MainLogo />
+        {!isMobile() && (
+          <MenuContainer>
+            {HEADER_NAVIGATION.map(({ title, url }) => (
+              <MenuItem key={`${title}${url}`}>
+                <Link to={url}>{title}</Link>
+              </MenuItem>
+            ))}
+            <Button>Contact Us</Button>
+          </MenuContainer>
+        )}
+      </HeaderComponent>
+    </Container>
   );
 };
