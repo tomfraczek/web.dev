@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { isMobile } from "../../theme/media";
+import { isMobile } from "theme/media";
 
 import { Button } from "../button";
 import { MainLogo } from "../mainLogo";
@@ -24,6 +24,7 @@ const HEADER_NAVIGATION = [
 
 export const Header = () => {
   const { t } = useTranslation();
+  console.log(isMobile());
   return (
     <Container>
       <HeaderComponent>

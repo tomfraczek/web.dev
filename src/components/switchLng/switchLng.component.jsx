@@ -24,6 +24,7 @@ export const SwitchLng = () => {
         ({ nativeName, code, icon }) =>
           code !== resolvedLanguage && (
             <CountryIcon
+              key={nativeName}
               src={icon}
               alt={nativeName}
               onClick={() => i18n.changeLanguage(code)}

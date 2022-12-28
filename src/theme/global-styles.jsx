@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { device, width } from "./media";
+import { device } from "./media";
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body{
     margin: 0;
+    margin-bottom: 10rem;
 
     *{
       color: #003049;
@@ -60,19 +61,26 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   margin: auto;
-  padding: 0 1rem;
+  width: 100%;
+  padding-right: 12px;
+  padding-left: 12px;
 
-  @media ${device.mobile} {
-    max-width: ${width.mobile};
-  }
   @media ${device.tablet} {
-    max-width: ${width.tablet};
+    max-width: 720px;
   }
   @media ${device.laptop} {
-    max-width: ${width.laptop};
-    padding: 0;
+    max-width: 1200px;
   }
+
   @media ${device.desktop} {
-    max-width: ${width.desktop};
+    max-width: 1600px;
   }
 `;
+
+// mobileS: "320px",
+// mobileM: "375px",
+// mobileL: "425px",
+// tablet: "768px",
+// laptop: "1024px",
+// laptopL: "1440px",
+// desktop: "2560px",

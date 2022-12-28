@@ -3,7 +3,7 @@ import { useTranslation, Trans } from "react-i18next";
 import { Button } from "../button/button.component";
 import { WordCarousel } from "../wordCarousel";
 
-import HeroImage from "./img/heroimage.png";
+import HeroImage from "./img/heroImage.png";
 
 import {
   HeroContainer,
