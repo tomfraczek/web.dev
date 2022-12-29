@@ -19,10 +19,7 @@ export const ContentHeader = styled.h1`
   white-space: pre-line;
 `;
 
-export const ContentDescription = styled.p`
-  font-size: 1.125rem;
-  line-height: 1.55;
-`;
+export const ContentDescription = styled.p``;
 
 export const CtaContainer = styled.div`
   display: flex;

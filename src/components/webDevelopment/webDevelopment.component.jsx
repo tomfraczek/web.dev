@@ -16,6 +16,7 @@ import {
   DescriptionContainer,
   Description,
 } from "./webDevelopmnent.styles";
+import { Highlighted } from "components/offerCards/offerCards.styles";
 
 const CONTENT = [
   {
@@ -54,25 +55,26 @@ const CONTENT = [
       "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
     icon: Upload,
   },
-  {
-    title: "Maintenence",
-    description:
-      "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
-    icon: Upload,
-  },
-  {
-    title: "Optymization",
-    description:
-      "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
-    icon: Upload,
-  },
+  // {
+  //   title: "Maintenence",
+  //   description:
+  //     "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
+  //   icon: Upload,
+  // },
+  // {
+  //   title: "Optymization",
+  //   description:
+  //     "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
+  //   icon: Upload,
+  // },
 ];
 
 export const WebDevelopment = () => {
   return (
     <WebDevConteiner>
       <Header>
-        <MainLogo />
+        web
+        <Highlighted>dev</Highlighted>
         elopment
       </Header>
 

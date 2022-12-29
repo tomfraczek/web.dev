@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { Container } from "theme/global-styles";
+import { Highlighted } from "components/offerCards/offerCards.styles";
+import { heading1 } from "theme/typography";
 
 const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
   style: { height: `${dynamicHeight}px` },
@@ -13,7 +16,7 @@ const StickyInnerContainer = styled.div`
   top: 0;
   height: 100vh;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
@@ -22,6 +25,15 @@ const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
   position: absolute;
   height: 100%;
   will-change: transform;
+`;
+
+const CarouselHeader = styled.h1`
+  ${heading1}
+`;
+
+const StickyContainer = styled(Container)`
+  position: sticky;
+  top: 85px;
 `;
 
 const calcDynamicHeight = (objectWidth) => {
@@ -63,6 +75,11 @@ export const HorizontalScroll = ({ children }) => {
   return (
     <TallOuterContainer dynamicHeight={dynamicHeight}>
       <StickyInnerContainer ref={containerRef}>
+        <StickyContainer>
+          <CarouselHeader>
+            how<Highlighted>do</Highlighted>we<Highlighted>do</Highlighted>it
+          </CarouselHeader>
+        </StickyContainer>
         <HorizontalTranslateContainer translateX={translateX} ref={objectRef}>
           {children}
         </HorizontalTranslateContainer>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { color } from "theme";
 import { device } from "theme/media";
+import { heading1 } from "theme/typography";
 
 export const OfferCardsContainer = styled.div`
   margin-top: 10rem;
@@ -18,7 +19,11 @@ export const CardsContainer = styled.div`
 `;
 
 export const CardTitle = styled.h3`
-  color: ${color.logoBlue};
-  font-size: 1.8rem;
+  ${heading1}
+  color: ${color.black};
   margin-bottom: 2rem;
+`;
+
+export const Highlighted = styled.span`
+  color: ${color.logoRed};
 `;

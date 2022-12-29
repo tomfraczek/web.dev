@@ -2,6 +2,7 @@ import {
   CardTitle,
   CardsContainer,
   OfferCardsContainer,
+  Highlighted,
 } from "./offerCards.styles";
 import { OfferCard } from "./offerCard";
 
@@ -43,7 +44,9 @@ const CARDS_CONTENT = [
 export const OfferCards = () => {
   return (
     <OfferCardsContainer>
-      <CardTitle>Check the offer</CardTitle>
+      <CardTitle>
+        check<Highlighted>the</Highlighted>offer
+      </CardTitle>
       <CardsContainer>
         {CARDS_CONTENT.map(
           ({

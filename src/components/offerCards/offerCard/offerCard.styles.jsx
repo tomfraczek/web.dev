@@ -34,6 +34,10 @@ export const Card = styled.div`
 export const CardTitle = styled.h3`
   color: ${color.logoBlue};
   font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
 `;
 
 export const TopDescription = styled.p`
@@ -50,6 +54,8 @@ export const List = styled.ul``;
 
 export const ListItem = styled.li`
   margin-bottom: 1rem;
+  font-weight: 600;
+  color: ${color.logoBlue};
 `;
 
 export const Medal = styled.img`
@@ -72,15 +78,16 @@ export const OldPrice = styled.p`
 `;
 
 export const NewPrice = styled.p`
-  color: ${color.logoBlue};
+  color: ${color.logoRed};
   font-size: 36px;
-
+  font-weight: 600;
   position: relative;
   top: 6px;
 `;
 
 export const PriceTitle = styled.div`
   margin-right: 1rem;
+  color: ${color.logoBlue};
 `;
 
 export const CardHeader = styled.div`
