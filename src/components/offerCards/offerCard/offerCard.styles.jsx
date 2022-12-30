@@ -55,10 +55,6 @@ export const Price = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: center;
-
-  @media ${device.tablet} {
-    justify-content: flex-start;
-  }
 `;
 
 export const List = styled.ul``;

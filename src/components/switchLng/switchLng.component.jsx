@@ -1,18 +1,10 @@
 import { useTranslation, Trans } from "react-i18next";
+import { LNGS } from "theme/constants";
 
 import usa from "lng/icon/usa.png";
 import poland from "lng/icon/poland.png";
 
-import { SwitchContainer, CountryIcon } from "./sitchLng.styles";
-
-const lngs = [
-  { nativeName: "English", code: "en", icon: usa },
-  {
-    nativeName: "Polski",
-    code: "pl",
-    icon: poland,
-  },
-];
+import { SwitchContainer, CountryIcon } from "./swtchLng.styles";
 
 export const SwitchLng = () => {
   const { i18n } = useTranslation();
@@ -20,7 +12,7 @@ export const SwitchLng = () => {
   //   console.log(resolvedLanguage);
   return (
     <SwitchContainer>
-      {lngs.map(
+      {/* {lngs.map(
         ({ nativeName, code, icon }) =>
           code !== resolvedLanguage && (
             <CountryIcon
@@ -30,7 +22,7 @@ export const SwitchLng = () => {
               onClick={() => i18n.changeLanguage(code)}
             />
           )
-      )}
+      )} */}
     </SwitchContainer>
   );
 };

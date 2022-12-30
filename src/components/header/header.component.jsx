@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { isMobile } from "theme/media";
+import { MAIN_NAVIGATION } from "theme/constants";
 
 import { Button } from "components/button";
 import { MainLogo } from "components/mainLogo";
@@ -12,17 +13,6 @@ import { HeaderComponent, MenuContainer, MenuItem } from "./header.styles";
 
 import { Container } from "../../theme/global-styles";
 
-const HEADER_NAVIGATION = [
-  {
-    title: "About",
-    url: "/about",
-  },
-  {
-    title: "Offer",
-    url: "/offer",
-  },
-];
-
 export const Header = () => {
   const { t } = useTranslation();
   console.log(isMobile());
@@ -30,9 +20,9 @@ export const Header = () => {
     <Container>
       <HeaderComponent>
         <MainLogo />
-        {!isMobile() && (
+        {/* {!isMobile() && (
           <MenuContainer>
-            {HEADER_NAVIGATION.map(({ title, url }) => (
+            {MAIN_NAVIGATION.map(({ title, url }) => (
               <MenuItem key={`${title}${url}`}>
                 <Link to={url}>{title}</Link>
               </MenuItem>
@@ -40,7 +30,10 @@ export const Header = () => {
             <SwitchLng />
             <Button>{t("links.contact")}</Button>
           </MenuContainer>
-        )}
+        )} */}
+        {/* <Button style={{ marginLeft: "auto", marginRight: "50px" }}>
+          {t("links.contact")}
+        </Button> */}
         <HamburgerMenu />
       </HeaderComponent>
     </Container>

@@ -5,6 +5,7 @@ import {
   ContentContainer,
   ContentParagraph,
   ContentHeader,
+  CtaContainer,
 } from "./contactBar.styles";
 
 export const ContactBar = () => {
@@ -19,7 +20,10 @@ export const ContactBar = () => {
             elit. Nunc porta, lorem eu imperdiet tincidunt, leo diam sodales
             mauris, at ullamcorper massa quam a erat.
           </ContentParagraph>
-          <Button secondary>Request a Quote</Button>
+          <CtaContainer>
+            <Button secondary>Request a Quote</Button>
+            <Button primary>Contact Us</Button>
+          </CtaContainer>
         </ContentContainer>
       </Container>
     </ContactBarContainer>

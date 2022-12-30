@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { MenuToggle } from "./menuToggle";
@@ -15,7 +15,6 @@ const MenuContainer = styled(motion.div)`
   max-width: 44%;
   height: 100%;
   background-color: #fff;
-  box-shadow: -2px 0 2px rgba(15, 15, 15, 0.3);
   z-index: 90;
   position: fixed;
   top: 0;
@@ -27,7 +26,6 @@ const MenuContainer = styled(motion.div)`
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 7em;
 `;
 
 const menuVariants = {
@@ -48,7 +46,7 @@ const menuTransition = {
 
 const BackgroundContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -56,6 +54,7 @@ const BackgroundContainer = styled.div`
   transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   overflow: hidden;
+  z-index: -1;
 `;
 
 export function HamburgerMenu() {
@@ -65,9 +64,20 @@ export function HamburgerMenu() {
     setOpen(!isOpen);
   };
 
+  useEffect(() => {
+    if (document.body.style.overflowY !== "hidden") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+  }, [isOpen]);
+
   return (
     <>
-      <BackgroundContainer isOpen={isOpen} />
+      <BackgroundContainer
+        style={{ zIndex: isOpen ? 10 : -1 }}
+        isOpen={isOpen}
+      />
       <HamburgerMenuContainer>
         <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
         <MenuContainer
@@ -77,7 +87,7 @@ export function HamburgerMenu() {
           transition={menuTransition}
         >
           <ContentContainer>
-            <NavMenu isOpen={isOpen} />
+            <NavMenu isOpen={isOpen} setOpen={setOpen} />
           </ContentContainer>
         </MenuContainer>
       </HamburgerMenuContainer>

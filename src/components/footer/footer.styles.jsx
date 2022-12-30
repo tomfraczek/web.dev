@@ -9,7 +9,7 @@ export const FooterContainer = styled.div`
   /* align-items: center; */
   justify-content: space-evenly;
   margin-top: 5rem;
-  padding: 2rem 0;
+  padding: 2rem 0 1rem 0;
 `;
 
 export const Copyright = styled.p`
@@ -19,8 +19,7 @@ export const Copyright = styled.p`
 export const MenuContainer = styled.div`
   display: flex;
   align-items: center;
-  /* margin-left: auto; */
-  /* justify-self: center; */
+  margin-bottom: 10px;
   a {
     color: ${color.white};
     text-transform: uppercase;

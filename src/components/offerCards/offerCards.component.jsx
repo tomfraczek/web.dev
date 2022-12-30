@@ -6,7 +6,7 @@ import {
 } from "./offerCards.styles";
 import { OfferCard } from "./offerCard";
 import { Container } from "theme/global-styles";
-import { CARDS_CONTENT } from "theme/constants";
+import { OFFERS } from "theme/constants";
 
 export const OfferCards = () => {
   return (
@@ -16,7 +16,7 @@ export const OfferCards = () => {
           check<Highlighted>the</Highlighted>offer
         </CardTitle>
         <CardsContainer>
-          {CARDS_CONTENT.map(
+          {OFFERS.map(
             ({
               title,
               oldPrice,

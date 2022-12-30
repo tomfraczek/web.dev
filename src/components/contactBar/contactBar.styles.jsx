@@ -38,3 +38,11 @@ export const ContentParagraph = styled.p`
     color: ${color.white};
   }
 `;
+
+export const CtaContainer = styled.div`
+  display: flex;
+
+  span:first-of-type {
+    margin-right: 15px;
+  }
+`;
