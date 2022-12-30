@@ -1,20 +1,31 @@
 import styled from "styled-components";
 import { darkBlue } from "theme/color";
 import { heading1, paragraph1 } from "theme/typography";
+import { device } from "theme/media";
 
 export const SupportHeader = styled.h1`
   ${heading1}
-  margin-bottom: 4rem;
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   color: ${darkBlue};
+
+  @media ${device.tablet} {
+    margin-top: 0;
+    margin-bottom: 4rem;
+  }
 `;
 
 export const SupportContainer = styled.div`
   display: flex;
-  align-items: flex-start;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
+
+  @media ${device.tablet} {
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -22,7 +33,13 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  @media ${device.tablet} {
+    width: 40%;
+    margin-bottom: 0;
+  }
 `;
 
 export const Header = styled.h3`
@@ -36,7 +53,12 @@ export const Description = styled.p`
 `;
 
 export const ImageContainer = styled.div`
-  width: 40%;
+  width: 90%;
+  margin: auto;
+  @media ${device.tablet} {
+    width: 40%;
+    margin: unset;
+  }
 `;
 
 export const Image = styled.img`

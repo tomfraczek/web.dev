@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import { color } from "theme";
+import { device } from "theme/media";
 import { heading1, paragraph2 } from "theme/typography";
 
 export const WebDevConteiner = styled.div`
-  margin-top: 10rem;
+  margin-top: 5rem;
+  @media ${device.tablet} {
+    margin-top: 10rem;
+  }
 `;
 
 export const Header = styled.h1`
@@ -21,8 +25,14 @@ export const ContentContainer = styled.div`
 export const DevCard = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: 30%;
+  flex-basis: 200%;
   margin-bottom: 3rem;
+  padding: 0 10px;
+
+  @media ${device.tablet} {
+    flex-basis: 30%;
+    padding: 0;
+  }
 `;
 
 export const TechIconContainer = styled.div`

@@ -3,9 +3,10 @@ import { useTranslation } from "react-i18next";
 
 import { isMobile } from "theme/media";
 
-import { Button } from "../button";
-import { MainLogo } from "../mainLogo";
-import { SwitchLng } from "../switchLng";
+import { Button } from "components/button";
+import { MainLogo } from "components/mainLogo";
+import { SwitchLng } from "components/switchLng";
+import { HamburgerMenu } from "components/hamburgerMenu";
 
 import { HeaderComponent, MenuContainer, MenuItem } from "./header.styles";
 
@@ -40,6 +41,7 @@ export const Header = () => {
             <Button>{t("links.contact")}</Button>
           </MenuContainer>
         )}
+        <HamburgerMenu />
       </HeaderComponent>
     </Container>
   );

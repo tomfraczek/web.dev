@@ -1,4 +1,5 @@
 import { Highlighted } from "components/offerCards/offerCards.styles";
+import { Container } from "theme/global-styles";
 import ImageSupport from "./img/support.jpg";
 
 import {
@@ -13,7 +14,7 @@ import {
 
 export const Support = () => {
   return (
-    <>
+    <Container>
       <SupportHeader>
         Support<Highlighted>&</Highlighted>Maintenence
       </SupportHeader>
@@ -34,6 +35,6 @@ export const Support = () => {
           <Image src={ImageSupport} />
         </ImageContainer>
       </SupportContainer>
-    </>
+    </Container>
   );
 };

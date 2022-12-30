@@ -2,22 +2,22 @@ import { Hero } from "components/hero/hero.component";
 import { WebDevelopment } from "components/webDevelopment";
 import { OfferCards } from "components/offerCards";
 import { Carousel } from "components/carousel";
-
-import { Container } from "theme/global-styles";
 import { Support } from "components/support";
+import { Footer } from "components/footer";
+import { HowDoWeDoIt } from "components/howDoWeDoIt";
+
+import { isMobile } from "theme/media";
+import { ContactBar } from "components/contactBar";
 
 export const Home = () => {
   return (
     <>
-      <Container>
-        <Hero />
-        <WebDevelopment />
-        <OfferCards />
-      </Container>
-      <Carousel />
-      <Container>
-        <Support />
-      </Container>
+      <Hero />
+      <WebDevelopment />
+      <OfferCards />
+      {isMobile() ? <HowDoWeDoIt /> : <Carousel />}
+      <Support />
+      <ContactBar />
     </>
   );
 };

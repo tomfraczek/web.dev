@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { color } from "../../theme";
+import { device } from "theme/media";
+import { paragraph1 } from "theme/typography";
 
 export const HeroContainer = styled.div`
   display: flex;
@@ -19,19 +21,41 @@ export const ContentHeader = styled.h1`
   white-space: pre-line;
 `;
 
-export const ContentDescription = styled.p``;
+export const ContentDescription = styled.p`
+  ${paragraph1}
+  margin-bottom: 1rem;
+`;
 
 export const CtaContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  flex-direction: column;
 
-  span:first-of-type {
-    margin-right: 1rem;
+  span {
+    margin-bottom: 1rem;
+    width: 150px;
+
+    @media ${device.tablet} {
+      width: unset;
+    }
+  }
+
+  @media ${device.tablet} {
+    margin-top: 1rem;
+    flex-direction: row;
+    \ span:first-of-type {
+      margin-right: 1rem;
+    }
   }
 `;
 
-export const ImageContainer = styled.div``;
+export const ImageContainer = styled.div`
+  display: none;
+  @media ${device.tablet} {
+    display: block;
+  }
+`;
 
 export const Image = styled.img`
   width: 100%;

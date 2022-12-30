@@ -17,6 +17,7 @@ import {
   Description,
 } from "./webDevelopmnent.styles";
 import { Highlighted } from "components/offerCards/offerCards.styles";
+import { Container } from "theme/global-styles";
 
 const CONTENT = [
   {
@@ -71,28 +72,30 @@ const CONTENT = [
 
 export const WebDevelopment = () => {
   return (
-    <WebDevConteiner>
-      <Header>
-        web
-        <Highlighted>dev</Highlighted>
-        elopment
-      </Header>
+    <Container>
+      <WebDevConteiner>
+        <Header>
+          web
+          <Highlighted>dev</Highlighted>
+          elopment
+        </Header>
 
-      <ContentContainer>
-        {CONTENT.map(({ title, description, icon }) => (
-          <DevCard key={title}>
-            <TechIconContainer>
-              <TechIcon src={icon} />
-            </TechIconContainer>
+        <ContentContainer>
+          {CONTENT.map(({ title, description, icon }) => (
+            <DevCard key={title}>
+              <TechIconContainer>
+                <TechIcon src={icon} />
+              </TechIconContainer>
 
-            <Title>{title}</Title>
+              <Title>{title}</Title>
 
-            <DescriptionContainer>
-              <Description>{description}</Description>
-            </DescriptionContainer>
-          </DevCard>
-        ))}
-      </ContentContainer>
-    </WebDevConteiner>
+              <DescriptionContainer>
+                <Description>{description}</Description>
+              </DescriptionContainer>
+            </DevCard>
+          ))}
+        </ContentContainer>
+      </WebDevConteiner>
+    </Container>
   );
 };

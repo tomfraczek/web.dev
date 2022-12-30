@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body{
     margin: 0;
-    margin-bottom: 10rem;
 
     *{
       color: #003049;
@@ -61,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   margin: auto;
-  width: 100%;
+  /* width: calc(100% - 24px); */
   padding-right: 12px;
   padding-left: 12px;
 
@@ -69,7 +68,7 @@ export const Container = styled.div`
     max-width: 720px;
   }
   @media ${device.laptop} {
-    max-width: 1200px;
+    max-width: 1385px;
   }
 
   @media ${device.desktop} {

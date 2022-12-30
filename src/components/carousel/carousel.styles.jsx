@@ -31,7 +31,6 @@ export const CardsContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-end;
-  /* top: 100px; */
 `;
 
 export const SampleCard = styled.div`

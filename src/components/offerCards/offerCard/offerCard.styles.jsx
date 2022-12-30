@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { color } from "theme";
+import { device } from "theme/media";
 
 export const Card = styled.div`
   position: relative;
@@ -13,13 +14,18 @@ export const Card = styled.div`
   background-color: ${color.white};
   border: 0 solid ${color.darkBlue};
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  width: 100%;
 
   &:first-of-type {
-    margin-left: 0;
+    @media ${device.tablet} {
+      margin-left: 0;
+    }
   }
 
   &:last-of-type {
-    margin-right: 0;
+    @media ${device.tablet} {
+      margin-right: 0;
+    }
   }
 
   &:hover {
@@ -48,6 +54,11 @@ export const Price = styled.div`
   margin-bottom: 1rem;
   display: flex;
   align-items: baseline;
+  justify-content: center;
+
+  @media ${device.tablet} {
+    justify-content: flex-start;
+  }
 `;
 
 export const List = styled.ul``;
@@ -56,6 +67,11 @@ export const ListItem = styled.li`
   margin-bottom: 1rem;
   font-weight: 600;
   color: ${color.logoBlue};
+  text-align: center;
+
+  @media ${device.tablet} {
+    text-align: left;
+  }
 `;
 
 export const Medal = styled.img`
@@ -113,4 +129,5 @@ export const AwardContainer = styled.div`
   align-items: center;
   color: ${color.darkGray};
   font-style: italic;
+  justify-content: center;
 `;

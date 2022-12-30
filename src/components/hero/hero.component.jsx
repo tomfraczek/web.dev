@@ -15,29 +15,32 @@ import {
   Image,
   BlueHighlight,
 } from "./hero.styles";
+import { Container } from "theme/global-styles";
 
 export const Hero = () => {
   const { t } = useTranslation();
   return (
-    <HeroContainer>
-      <ContentContainer>
-        <ContentHeader>
-          <Trans components={{ highlight: <BlueHighlight /> }}>
-            hero.header.part1
-          </Trans>
-          <WordCarousel />
-          {t("hero.header.part2")}
-        </ContentHeader>
-        <ContentDescription>{t("hero.description")}</ContentDescription>
-        <CtaContainer>
-          <Button secondary>{t("links.check_offer")}</Button>
-          <Button>{t("links.contact")}</Button>
-        </CtaContainer>
-      </ContentContainer>
+    <Container>
+      <HeroContainer>
+        <ContentContainer>
+          <ContentHeader>
+            <Trans components={{ highlight: <BlueHighlight /> }}>
+              hero.header.part1
+            </Trans>
+            <WordCarousel />
+            {t("hero.header.part2")}
+          </ContentHeader>
+          <ContentDescription>{t("hero.description")}</ContentDescription>
+          <CtaContainer>
+            <Button secondary>{t("links.check_offer")}</Button>
+            <Button>{t("links.contact")}</Button>
+          </CtaContainer>
+        </ContentContainer>
 
-      <ImageContainer>
-        <Image src={HeroImage} />
-      </ImageContainer>
-    </HeroContainer>
+        <ImageContainer>
+          <Image src={HeroImage} />
+        </ImageContainer>
+      </HeroContainer>
+    </Container>
   );
 };
