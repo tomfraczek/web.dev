@@ -1,84 +1,26 @@
-import clock from "components/carousel/img/clock.jpg";
-import code1 from "components/carousel/img/code1.jpg";
-import code2 from "components/carousel/img/code2.jpg";
-import dashboard from "components/carousel/img/dashboard.jpg";
-import design1 from "components/carousel/img/design1.jpg";
-import design2 from "components/carousel/img/design2.jpg";
-import feedback from "components/carousel/img/feedback.jpg";
-import feedback2 from "components/carousel/img/feedback2.jpg";
-import feedback3 from "components/carousel/img/feedback3.jpg";
-import fireworks1 from "components/carousel/img/fireworks1.jpg";
-import fireworks2 from "components/carousel/img/fireworks2.jpg";
-import fireworks3 from "components/carousel/img/fireworks3.jpg";
-import fireworks4 from "components/carousel/img/fireworks4.jpg";
-import laptop1 from "components/carousel/img/laptop1.jpg";
-import laptop2 from "components/carousel/img/laptop2.jpg";
-import laptop3 from "components/carousel/img/laptop3.jpg";
-import laptop4 from "components/carousel/img/laptop4.jpg";
-import meeting1 from "components/carousel/img/meeting1.jpg";
-import meeting2 from "components/carousel/img/meeting2.jpg";
-import meeting3 from "components/carousel/img/meeting3.jpg";
-import meeting4 from "components/carousel/img/meeting4.jpg";
-import meeting5 from "components/carousel/img/meeting5.jpg";
-import meeting6 from "components/carousel/img/meeting6.jpg";
-import meetingDashboard from "components/carousel/img/meetingDashboard.jpg";
-import time from "components/carousel/img/time.jpg";
+//  CAROUSEL IMPORT
 
+// TECHNOLOGIES IMPORT
+import bootstrap from "components/technologies/icons/bootstrap.svg";
+import css from "components/technologies/icons/css.svg";
+import github from "components/technologies/icons/github.svg";
+import html from "components/technologies/icons/html.svg";
+import jira from "components/technologies/icons/jira.svg";
+import js from "components/technologies/icons/js.svg";
+import mui from "components/technologies/icons/mui.svg";
+import next from "components/technologies/icons/next.svg";
+import react from "components/technologies/icons/react.svg";
+import reactNative from "components/technologies/icons/reactNative.svg";
+import sass from "components/technologies/icons/sass.svg";
+import storyblok from "components/technologies/icons/storyblok.svg";
+import styledComponents from "components/technologies/icons/styledComponents.svg";
+import tailwind from "components/technologies/icons/tailwind.svg";
+import uikit from "components/technologies/icons/uikit.svg";
+
+// LANGUAGE IMPORT
 import usa from "lng/icon/usa.png";
 import poland from "lng/icon/poland.png";
 import france from "lng/icon/france.png";
-
-export const HOW_WE_DO_IT_CARDS = [
-  {
-    title: "Step 1",
-    subtitle: "Introduction",
-    description:
-      "We start each individual project with a precise understanding of your needs. At first we set the meeting, during which we discuss the idea and work together on the vision of the project. We get to know your product, business goals, customer characteristics and their problems. We identify the expectations of your target group from your industry ourselves.",
-    image: meeting4,
-  },
-  {
-    title: "Step 2",
-    subtitle: "Design Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-    image: design1,
-  },
-  {
-    title: "Step 3",
-    subtitle: "Your Feedback",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-    image: laptop1,
-  },
-  {
-    title: "Step 4",
-    subtitle: "Product Development",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-    image: feedback,
-  },
-  {
-    title: "Step 5",
-    subtitle: "More Feedback",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-    image: feedback2,
-  },
-  {
-    title: "Step 6",
-    subtitle: "Lanch day",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-    image: fireworks1,
-  },
-  //   {
-  //     title: "Step 6",
-  //     subtitle: "Support",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae suscipit ipsum. Etiam aliquet consectetur ligula, sed sagittis ipsum finibus id. Fusce scelerisque massa leo, ut ultrices urna finibus eget. Integer vitae felis rutrum, rhoncus nisl vel, vestibulum purus.",
-  //     image: clock,
-  //   },
-];
 
 export const OFFERS = [
   {
@@ -125,16 +67,16 @@ export const MAIN_NAVIGATION = [
     url: "/about",
   },
   {
-    title: "Offers",
-    url: "/offers",
-  },
-  {
-    title: "Career",
-    url: "/career",
+    title: "Services",
+    url: "/services",
   },
   {
     title: "Free Quote",
     url: "/quote",
+  },
+  {
+    title: "Career",
+    url: "/career",
   },
   {
     title: "Contact",
@@ -146,4 +88,57 @@ export const LNGS = [
   { nativeName: "English", code: "en", icon: usa },
   { nativeName: "Français", code: "fr", icon: france },
   { nativeName: "Polski", code: "pl", icon: poland },
+];
+
+export const TECH_STACK = [
+  {
+    title: "HTML CSS JavaScript",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut justo sed augue tristique suscipit. Etiam fermentum ultricies erat. Cras pellentesque dapibus diam. Suspendisse congue risus neque, in imperdiet augue tempus sed.",
+    icons: [js],
+    // css,
+    // html,
+  },
+  {
+    title: "Web Applications and User Interfaces",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [react],
+  },
+  {
+    title: "Mobile Apps",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [reactNative],
+  },
+  {
+    title: "Server side rendering",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [next],
+  },
+  {
+    title: "Content Menagment System - CMS",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [storyblok],
+  },
+  {
+    title: "Transparency",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [jira, github],
+  },
+  {
+    title: "Front-end frameworks",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [bootstrap, uikit, tailwind, mui],
+  },
+  {
+    title: "Front-end frameworks",
+    description:
+      "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
+    icons: [styledComponents, sass, mui, uikit, bootstrap],
+  },
 ];

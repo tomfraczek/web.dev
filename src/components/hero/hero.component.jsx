@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useTranslation, Trans } from "react-i18next";
 
 import { Button } from "../button/button.component";
@@ -19,8 +23,11 @@ import { Container } from "theme/global-styles";
 
 export const Hero = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <Container>
+    <Container data-aos="fade-right">
       <HeroContainer>
         <ContentContainer>
           <ContentHeader>

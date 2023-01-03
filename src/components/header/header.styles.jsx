@@ -6,6 +6,7 @@ export const HeaderComponent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4rem;
 `;
 
 export const MenuContainer = styled.div`

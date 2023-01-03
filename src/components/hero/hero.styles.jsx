@@ -8,7 +8,6 @@ export const HeroContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4rem;
 `;
 
 export const ContentContainer = styled.div`

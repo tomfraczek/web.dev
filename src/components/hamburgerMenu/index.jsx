@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import { device } from "theme/media";
 import { MenuToggle } from "./menuToggle";
 import { NavMenu } from "./navMenu";
 
@@ -12,7 +13,7 @@ const HamburgerMenuContainer = styled.div`
 const MenuContainer = styled(motion.div)`
   min-width: 300px;
   width: 100%;
-  max-width: 44%;
+  max-width: 100%;
   height: 100%;
   background-color: #fff;
   z-index: 90;
@@ -21,6 +22,20 @@ const MenuContainer = styled(motion.div)`
   right: 0;
   transform: translateX(4em);
   user-select: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  @media ${device.mobileL} {
+    max-width: 60%;
+  }
+
+  @media ${device.laptop} {
+    max-width: 55%;
+  }
+
+  @media ${device.laptopL} {
+    max-width: 44%;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -57,8 +72,29 @@ const BackgroundContainer = styled.div`
   z-index: -1;
 `;
 
+const useOutsideAlerter = (ref, setOpen) => {
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+};
+
 export function HamburgerMenu() {
   const [isOpen, setOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef, setOpen);
 
   const toggleMenu = () => {
     setOpen(!isOpen);
@@ -78,7 +114,8 @@ export function HamburgerMenu() {
         style={{ zIndex: isOpen ? 10 : -1 }}
         isOpen={isOpen}
       />
-      <HamburgerMenuContainer>
+
+      <HamburgerMenuContainer ref={wrapperRef}>
         <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
         <MenuContainer
           initial={false}

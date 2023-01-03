@@ -1,4 +1,7 @@
-import { MainLogo } from "components/mainLogo";
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import Responsive from "./img/responsive.gif";
 import Earth from "./img/earth.gif";
@@ -71,8 +74,11 @@ const CONTENT = [
 ];
 
 export const WebDevelopment = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <Container>
+    <Container data-aos="fade-left">
       <WebDevConteiner>
         <Header>
           web

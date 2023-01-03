@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { Button } from "components/button";
 import { Container } from "theme/global-styles";
 import {
@@ -9,8 +14,11 @@ import {
 } from "./contactBar.styles";
 
 export const ContactBar = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <ContactBarContainer>
+    <ContactBarContainer data-aos="fade-left">
       <Container>
         <ContentContainer>
           <ContentHeader>Request a free quote</ContentHeader>

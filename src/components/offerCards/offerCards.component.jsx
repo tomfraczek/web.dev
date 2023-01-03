@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import {
   CardTitle,
   CardsContainer,
@@ -9,8 +14,12 @@ import { Container } from "theme/global-styles";
 import { OFFERS } from "theme/constants";
 
 export const OfferCards = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <Container>
+    <Container data-aos="fade-right">
       <OfferCardsContainer>
         <CardTitle>
           check<Highlighted>the</Highlighted>offer

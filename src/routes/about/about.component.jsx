@@ -1,5 +1,10 @@
-import React from "react";
+import { HeroLight } from "components/heroLight";
+import { AboutContainer } from "./about.styles";
 
 export const About = () => {
-  return <div>about.component</div>;
+  return (
+    <AboutContainer>
+      <HeroLight />
+    </AboutContainer>
+  );
 };

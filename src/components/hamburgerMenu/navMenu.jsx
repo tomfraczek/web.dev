@@ -6,37 +6,12 @@ import styled from "styled-components";
 import { color } from "theme";
 import { useTranslation } from "react-i18next";
 import { LNGS, MAIN_NAVIGATION, OFFERS } from "theme/constants";
+import { device } from "theme/media";
 
 const NavMenuContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-const NavList = styled.ul`
-  padding: 0 0.8em;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const NavLink = styled(motion.li)`
-  font-weight: 600;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  a {
-    text-decoration: none;
-    color: #444;
-    font-size: 20px;
-    transition: all 200ms ease-in-out;
-  }
-  &:hover {
-    a {
-      color: #555;
-    }
-  }
 `;
 
 const variants = {
@@ -105,6 +80,11 @@ const MenuSmall = styled(motion.span)`
 
 const BodyContainer = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
 `;
 
 const NavigationContainerSmall = styled.div`
@@ -138,7 +118,7 @@ export function NavMenu({ isOpen, setOpen }) {
             },
             hide: {
               ...variants.hide,
-              transition: { delay: 0.3, duration: 0.05 },
+              transition: { delay: 0, duration: 0.5 },
             },
           }}
         >
@@ -156,7 +136,7 @@ export function NavMenu({ isOpen, setOpen }) {
                 },
                 hide: {
                   ...variants.hide,
-                  transition: { delay: 0.3, duration: 0.05 },
+                  transition: { delay: 0, duration: 0.5 },
                 },
               }}
             >
@@ -174,7 +154,7 @@ export function NavMenu({ isOpen, setOpen }) {
                     },
                     hide: {
                       ...variants.hide,
-                      transition: { delay: 0.3, duration: 0.05 },
+                      transition: { delay: 0, duration: 0.5 },
                     },
                   }}
                   key={`${title}${url}`}
@@ -199,7 +179,7 @@ export function NavMenu({ isOpen, setOpen }) {
                   },
                   hide: {
                     ...variants.hide,
-                    transition: { delay: 0.3, duration: 0.05 },
+                    transition: { delay: 0, duration: 0.5 },
                   },
                 }}
               >
@@ -217,7 +197,7 @@ export function NavMenu({ isOpen, setOpen }) {
                       },
                       hide: {
                         ...variants.hide,
-                        transition: { delay: 0.3, duration: 0.05 },
+                        transition: { delay: 0, duration: 0.5 },
                       },
                     }}
                     key={`${title}${url}`}
@@ -244,7 +224,7 @@ export function NavMenu({ isOpen, setOpen }) {
                           },
                           hide: {
                             ...variants.hide,
-                            transition: { delay: 0.3, duration: 0.05 },
+                            transition: { delay: 0, duration: 0.5 },
                           },
                         }}
                         key={nativeName}
@@ -262,102 +242,3 @@ export function NavMenu({ isOpen, setOpen }) {
     </NavMenuContainer>
   );
 }
-
-/* <NavList>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.3, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.05, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">Home</a>
-        </NavLink>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.4, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.1, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">Products</a>
-        </NavLink>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.5, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.15, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">Key Benefits</a>
-        </NavLink>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.6, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.2, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">About</a>
-        </NavLink>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.7, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.25, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">FAQ</a>
-        </NavLink>
-        <NavLink
-          initial={false}
-          animate={isOpen ? "show" : "hide"}
-          variants={{
-            show: {
-              ...variants.show,
-              transition: { delay: 0.8, duration: 0.2 },
-            },
-            hide: {
-              ...variants.hide,
-              transition: { delay: 0.3, duration: 0.05 },
-            },
-          }}
-        >
-          <a href="#">Contact</a>
-        </NavLink>
-      </NavList> */

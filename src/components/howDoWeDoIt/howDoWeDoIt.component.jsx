@@ -1,4 +1,4 @@
-import { HOW_WE_DO_IT_CARDS } from "theme/constants";
+import { HOW_WE_DO_IT_CARDS } from "components/carousel/carousel.constants";
 import { Container } from "theme/global-styles";
 import { Highlighted } from "components/offerCards/offerCards.styles";
 

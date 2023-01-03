@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { Highlighted } from "components/offerCards/offerCards.styles";
 import { Container } from "theme/global-styles";
 import ImageSupport from "./img/support.jpg";
@@ -13,8 +18,11 @@ import {
 } from "./support.styles";
 
 export const Support = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <Container>
+    <Container data-aos="fade-right">
       <SupportHeader>
         Support<Highlighted>&</Highlighted>Maintenence
       </SupportHeader>

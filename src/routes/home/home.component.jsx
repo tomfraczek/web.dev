@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { Hero } from "components/hero/hero.component";
 import { WebDevelopment } from "components/webDevelopment";
 import { OfferCards } from "components/offerCards";
@@ -10,6 +15,10 @@ import { isMobile } from "theme/media";
 import { ContactBar } from "components/contactBar";
 
 export const Home = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <Hero />
