@@ -5,6 +5,10 @@ export const heading1 = css`
   font-size: 1.8rem;
 `;
 
+export const heading2 = css`
+  font-size: 3rem;
+`;
+
 export const paragraph1 = css`
   font-size: 16px;
   line-height: 22px;

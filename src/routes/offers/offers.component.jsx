@@ -1,5 +1,4 @@
 import { OfferCards } from "components/offerCards";
-import { Technologies } from "components/technologies/technologies.component";
 import { Container } from "theme/global-styles";
 import { ICONS, OFFERS } from "routes/offers/offers.constants";
 import rwd from "routes/offers/img/rwd.png";
@@ -27,15 +26,21 @@ import {
   // SectionHeader,
   Scroll,
 } from "./offers.styles";
+import { HighlightBlue, HighlightRed } from "theme/media";
 
 export const Offers = () => {
   return (
     <OffersContainer>
-      {/* <Technologies /> */}
       <Container>
+        {/* TODO: cre3ate a seperate component */}
         <Hero>
           <HeroContent>
-            <Title>What do we offer?</Title>
+            <Title>
+              What
+              <HighlightRed>do</HighlightRed>
+              we
+              <HighlightRed>offer</HighlightRed>?
+            </Title>
 
             <Description>
               At web-dev we understand that getting your business online might
@@ -81,8 +86,8 @@ export const Offers = () => {
             ))}
           </CardsContainer>
         </ContentContainer>
+        <OfferCards />
       </Container>
-      <OfferCards />
     </OffersContainer>
   );
 };

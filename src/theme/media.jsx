@@ -1,6 +1,9 @@
+import styled from "styled-components";
+import { color } from "theme";
+
 const getWindowWidth = () => window.innerWidth;
 
-const size = {
+export const size = {
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "425px",
@@ -35,3 +38,11 @@ export const isDesktop = () => {
   const width = getWindowWidth();
   return width >= size.desktop;
 };
+
+export const HighlightBlue = styled.span`
+  color: ${color.lightBlue};
+`;
+
+export const HighlightRed = styled.span`
+  color: ${color.logoRed};
+`;

@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import { heading1, paragraph1, paragraph2 } from "theme/typography";
+import { heading1, heading2, paragraph1, paragraph2 } from "theme/typography";
 import { color } from "theme";
-import { lensIndex } from "ramda";
 
 const blinker = keyframes`
   50% {
@@ -15,6 +14,7 @@ export const OffersContainer = styled.div`
 
 export const Hero = styled.section`
   display: flex;
+  margin-top: 150px;
 `;
 
 export const HeroContent = styled.div`
@@ -26,7 +26,7 @@ export const HeroContent = styled.div`
 `;
 
 export const Title = styled.h1`
-  ${heading1}
+  ${heading2}
   margin-bottom: 15px;
 `;
 

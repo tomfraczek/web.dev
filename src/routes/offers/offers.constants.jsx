@@ -1,18 +1,18 @@
-import bootstrap from "components/technologies/icons/bootstrap.svg";
-import css from "components/technologies/icons/css.svg";
-import github from "components/technologies/icons/github.svg";
-import html from "components/technologies/icons/html.svg";
-import jira from "components/technologies/icons/jira.svg";
-import js from "components/technologies/icons/js.svg";
-import mui from "components/technologies/icons/mui.svg";
-import next from "components/technologies/icons/next.svg";
-import react from "components/technologies/icons/react.svg";
-import reactNative from "components/technologies/icons/reactNative.svg";
-import sass from "components/technologies/icons/sass.svg";
-import storyblok from "components/technologies/icons/storyblok.svg";
-import styledComponents from "components/technologies/icons/styledComponents.svg";
-import tailwind from "components/technologies/icons/tailwind.svg";
-import uikit from "components/technologies/icons/uikit.svg";
+import bootstrap from "routes/offers/img/icons/bootstrap.svg";
+import css from "routes/offers/img/icons/css.svg";
+import github from "routes/offers/img/icons/github.svg";
+import html from "routes/offers/img/icons/html.svg";
+import jira from "routes/offers/img/icons/jira.svg";
+import js from "routes/offers/img/icons/js.svg";
+import mui from "routes/offers/img/icons/mui.svg";
+import next from "routes/offers/img/icons/next.svg";
+import react from "routes/offers/img/icons/react.svg";
+import reactNative from "routes/offers/img/icons/reactNative.svg";
+import sass from "routes/offers/img/icons/sass.svg";
+import storyblok from "routes/offers/img/icons/storyblok.svg";
+import styledComponents from "routes/offers/img/icons/styledComponents.svg";
+import tailwind from "routes/offers/img/icons/tailwind.svg";
+import uikit from "routes/offers/img/icons/uikit.svg";
 
 export const OFFERS = [
   {
@@ -26,7 +26,7 @@ export const OFFERS = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor enim qui eligendi sit in? Soluta, molestiae qui doloremque ipsam minima ipsum omnis praesentium incidunt placeat alias aliquid labore rerum sed.",
   },
   {
-    title: "User Interface",
+    title: "User Interfaces",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor enim qui eligendi sit in? Soluta, molestiae qui doloremque ipsam minima ipsum omnis praesentium incidunt placeat alias aliquid labore rerum sed.",
   },
@@ -48,6 +48,8 @@ export const OFFERS = [
 ];
 
 export const ICONS = [
+  html,
+  css,
   js,
   github,
   react,

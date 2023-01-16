@@ -60,7 +60,6 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   margin: auto;
-  /* width: calc(100% - 24px); */
   padding-right: 12px;
   padding-left: 12px;
 

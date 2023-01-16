@@ -57,7 +57,7 @@ export const OfferCard = ({
         {recommmended && (
           <AwardContainer>
             <Recommmended src={Rocket} />
-            For a Good Start
+            For a Quick Start
           </AwardContainer>
         )}
 
