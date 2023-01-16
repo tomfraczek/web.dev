@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { color } from "theme";
 import { Container } from "theme/global-styles";
-import { paragraph1 } from "theme/typography";
+import { paragraph1, paragraph2 } from "theme/typography";
 
 export const CarouselContainer = styled.div`
   margin-top: 10rem;
@@ -73,4 +73,10 @@ export const CarouselHeader = styled.h1``;
 export const StickyContainer = styled(Container)`
   position: sticky;
   top: 85px;
+`;
+
+export const Index = styled.p`
+  ${paragraph2}
+  margin-top: 25px;
+  font-size: 14px;
 `;

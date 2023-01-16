@@ -20,16 +20,18 @@ export const HowDoWeDoIt = () => {
         <CarouselHeader>
           how<Highlighted>do</Highlighted>we<Highlighted>do</Highlighted>it
         </CarouselHeader>
-        {HOW_WE_DO_IT_CARDS.map(({ title, description, image, subtitle }) => (
-          <SampleCard>
-            <CardContent>
-              <Title>{title}</Title>
-              <Subtitle>{subtitle}</Subtitle>
-              <Description>{description}</Description>
-            </CardContent>
-            <StepImage src={image} />
-          </SampleCard>
-        ))}
+        {HOW_WE_DO_IT_CARDS.map(
+          ({ title, description, image, subtitle }, i) => (
+            <SampleCard key={`${title}-${i}`}>
+              <CardContent>
+                <Title>{title}</Title>
+                <Subtitle>{subtitle}</Subtitle>
+                <Description>{description}</Description>
+              </CardContent>
+              <StepImage src={image} />
+            </SampleCard>
+          )
+        )}
       </CardsContainer>
     </Container>
   );

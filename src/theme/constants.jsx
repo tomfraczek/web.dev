@@ -62,10 +62,10 @@ export const OFFERS = [
 ];
 
 export const MAIN_NAVIGATION = [
-  {
-    title: "About",
-    url: "/about",
-  },
+  // {
+  //   title: "About",
+  //   url: "/about",
+  // },
   {
     title: "Services",
     url: "/services",
@@ -92,9 +92,9 @@ export const LNGS = [
 
 export const TECH_STACK = [
   {
-    title: "HTML CSS JavaScript",
+    title: "Websites",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut justo sed augue tristique suscipit. Etiam fermentum ultricies erat. Cras pellentesque dapibus diam. Suspendisse congue risus neque, in imperdiet augue tempus sed.",
+      "All our websites are custom designed for small businesses and start-ups requiring a professional business website with a content management system (CMS).",
     icons: [js],
     // css,
     // html,
@@ -103,7 +103,7 @@ export const TECH_STACK = [
     title: "Web Applications and User Interfaces",
     description:
       "Phasellus dictum sem diam, at sagittis justo scelerisque eu. Fusce pharetra enim mi, vitae placerat ipsum malesuada ut.",
-    icons: [react],
+    icons: [js, react],
   },
   {
     title: "Mobile Apps",

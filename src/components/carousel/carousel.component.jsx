@@ -20,6 +20,7 @@ import {
   Title,
   Subtitle,
   Description,
+  Index,
 } from "./carousel.styles.jsx";
 import { Highlighted } from "components/offerCards/offerCards.styles";
 
@@ -56,12 +57,13 @@ export const Carousel = () => {
             <HorizontalScroll>
               <CardsContainer ref={ContainerRef}>
                 {HOW_WE_DO_IT_CARDS.map(
-                  ({ title, description, image, subtitle }) => (
-                    <SampleCard ref={CardRef}>
+                  ({ title, description, image, subtitle }, i) => (
+                    <SampleCard ref={CardRef} key={`${title}-${i}`}>
                       <CardContent>
                         <Title>{title}</Title>
                         <Subtitle>{subtitle}</Subtitle>
                         <Description>{description}</Description>
+                        <Index>{`${i + 1}/${HOW_WE_DO_IT_CARDS.length}`}</Index>
                       </CardContent>
                       <StepImage src={image} />
                     </SampleCard>
