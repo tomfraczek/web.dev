@@ -23,7 +23,7 @@ export const OfferCards = () => {
   }, []);
 
   return (
-    <Container data-aos="fade-right">
+    <Container data-aos={!isMobile() && "fade-right"}>
       <OfferCardsContainer>
         <CardTitle>
           check<Highlighted>the</Highlighted>offer

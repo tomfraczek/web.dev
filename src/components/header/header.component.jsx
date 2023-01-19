@@ -11,7 +11,7 @@ import { MainLogo } from "components/mainLogo";
 import { SwitchLng } from "components/switchLng";
 import { HamburgerMenu } from "components/hamburgerMenu";
 
-import { HeaderComponent, MenuContainer, MenuItem } from "./header.styles";
+import { HeaderComponent, HeaderContent } from "./header.styles";
 
 import { Container } from "../../theme/global-styles";
 
@@ -52,8 +52,10 @@ export const Header = () => {
         animate={hidden ? "hidden" : "visible"}
         transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
       >
-        <MainLogo />
-        <HamburgerMenu />
+        <HeaderContent>
+          <MainLogo />
+          <HamburgerMenu />
+        </HeaderContent>
       </HeaderComponent>
     </Container>
   );

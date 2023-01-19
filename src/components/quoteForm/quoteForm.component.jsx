@@ -70,6 +70,7 @@ export const QuoteForm = () => {
   const [value, setValue] = useState(3);
   const [rangeValue, setRangeValue] = useState([2000, 3000]);
   const [internationalization, setInternationalization] = useState(false);
+  const [languagesNo, setLangguagesNo] = useState(0);
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
@@ -94,6 +95,10 @@ export const QuoteForm = () => {
 
   const handleInternationalization = () => {
     setInternationalization((prevState) => !prevState);
+  };
+
+  const handleLanguagesNo = (e) => {
+    setLangguagesNo(e.target.value);
   };
 
   return (
@@ -140,11 +145,11 @@ export const QuoteForm = () => {
             <Slider
               min={1}
               max={25}
-              value={value}
-              onChange={handleSliderChange}
+              value={languagesNo}
+              onChange={handleLanguagesNo}
               aria-labelledby="input-slider"
             />
-            <div>{value}</div>
+            <div>{languagesNo}</div>
           </>
         )}
       </>

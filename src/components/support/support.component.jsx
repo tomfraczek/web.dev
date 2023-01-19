@@ -25,7 +25,7 @@ export const Support = () => {
     }
   }, []);
   return (
-    <Container data-aos="fade-right">
+    <Container data-aos={!isMobile() && "fade-right"}>
       <SupportHeader>
         Support<Highlighted>&</Highlighted>Maintenence
       </SupportHeader>

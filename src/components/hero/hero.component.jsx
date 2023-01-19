@@ -30,7 +30,7 @@ export const Hero = () => {
     }
   }, []);
   return (
-    <Container data-aos="fade-right">
+    <Container data-aos={!isMobile() && "fade-right"}>
       <HeroContainer>
         <ContentContainer>
           <ContentHeader>

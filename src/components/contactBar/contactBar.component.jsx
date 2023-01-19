@@ -21,7 +21,7 @@ export const ContactBar = () => {
     }
   }, []);
   return (
-    <ContactBarContainer data-aos="fade-left">
+    <ContactBarContainer data-aos={!isMobile() && "fade-left"}>
       <Container>
         <ContentContainer>
           <ContentHeader>Request a free quote</ContentHeader>

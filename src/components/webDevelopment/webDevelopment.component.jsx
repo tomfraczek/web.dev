@@ -82,7 +82,7 @@ export const WebDevelopment = () => {
     }
   }, []);
   return (
-    <Container data-aos="fade-left">
+    <Container data-aos={!isMobile() && "fade-left"}>
       <WebDevConteiner>
         <Header>
           web

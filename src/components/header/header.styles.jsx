@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import { device } from "theme/media";
+import { Container } from "theme/global-styles";
 
 export const HeaderComponent = styled.div`
   height: 7rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 111;
-  width: calc(100% - 24px); /* left: 12px;
+  width: 100%;
+
+  /* left: 12px;
   right: 12px; */
+
   /* @media ${device.tablet} {
     width: 720px;
   }
@@ -21,6 +24,13 @@ export const HeaderComponent = styled.div`
   @media ${device.desktop} {
     width: 1600px;
   } */
+`;
+
+export const HeaderContent = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
 `;
 
 export const MenuContainer = styled.div`

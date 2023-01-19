@@ -54,7 +54,7 @@ export const Carousel = () => {
 
   return (
     <>
-      <CarouselContainer data-aos="fade-left">
+      <CarouselContainer data-aos={!isMobile() && "fade-left"}>
         <Main>
           <HorizontalSection>
             <HorizontalScroll>

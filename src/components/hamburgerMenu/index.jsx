@@ -63,10 +63,10 @@ const BackgroundContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   overflow: hidden;
   z-index: -1;
@@ -111,7 +111,7 @@ export function HamburgerMenu() {
   return (
     <>
       <BackgroundContainer
-        style={{ zIndex: isOpen ? 10 : -1 }}
+        style={{ zIndex: isOpen ? 10 : -1, width: !isOpen && "0" }}
         isOpen={isOpen}
       />
 
