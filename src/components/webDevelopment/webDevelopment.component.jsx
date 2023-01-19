@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { isMobile } from "theme/media";
+
 import Responsive from "./img/responsive.gif";
 import Earth from "./img/earth.gif";
 import Settings from "./img/settings.gif";
@@ -75,7 +77,9 @@ const CONTENT = [
 
 export const WebDevelopment = () => {
   useEffect(() => {
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
   return (
     <Container data-aos="fade-left">

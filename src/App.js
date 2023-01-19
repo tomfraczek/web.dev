@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Header } from "components/header";
 import { Home } from "routes/home";
 import { About } from "routes/about";
+import { Quote } from "routes/quote";
 import { Contact } from "routes/contact";
 import { Offers } from "routes/offers";
 import { Footer } from "components/footer";
@@ -13,8 +14,9 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/services" element={<Offers />} />
+        <Route path="/quote" element={<Quote />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />

@@ -20,11 +20,14 @@ import {
   BlueHighlight,
 } from "./hero.styles";
 import { Container } from "theme/global-styles";
+import { isMobile } from "theme/media";
 
 export const Hero = () => {
   const { t } = useTranslation();
   useEffect(() => {
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
   return (
     <Container data-aos="fade-right">

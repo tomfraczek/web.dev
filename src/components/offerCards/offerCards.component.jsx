@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { isMobile } from "theme/media";
+
 import {
   CardTitle,
   CardsContainer,
@@ -15,7 +17,9 @@ import { OFFERS } from "theme/constants";
 
 export const OfferCards = () => {
   useEffect(() => {
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
 
   return (

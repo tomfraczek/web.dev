@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { device } from "theme/media";
-import { MenuToggle } from "./menuToggle";
-import { NavMenu } from "./navMenu";
+import { MenuToggle } from "./menuToggle.component";
+import { NavMenu } from "./navMenu.component";
 
 const HamburgerMenuContainer = styled.div`
   display: flex;

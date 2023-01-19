@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { isMobile } from "theme/media";
 
 import { Button } from "components/button";
 import { Container } from "theme/global-styles";
@@ -15,7 +16,9 @@ import {
 
 export const ContactBar = () => {
   useEffect(() => {
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
   return (
     <ContactBarContainer data-aos="fade-left">

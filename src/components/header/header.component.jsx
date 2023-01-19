@@ -51,23 +51,8 @@ export const Header = () => {
         variants={variants}
         animate={hidden ? "hidden" : "visible"}
         transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
-        // style={navStyles}
       >
         <MainLogo />
-        {/* {!isMobile() && (
-          <MenuContainer>
-            {MAIN_NAVIGATION.map(({ title, url }) => (
-              <MenuItem key={`${title}${url}`}>
-                <Link to={url}>{title}</Link>
-              </MenuItem>
-            ))}
-            <SwitchLng />
-            <Button>{t("links.contact")}</Button>
-          </MenuContainer>
-        )} */}
-        {/* <Button style={{ marginLeft: "auto", marginRight: "50px" }}>
-          {t("links.contact")}
-        </Button> */}
         <HamburgerMenu />
       </HeaderComponent>
     </Container>

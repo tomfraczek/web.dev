@@ -3,6 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { isMobile } from "theme/media";
+
 import styled from "styled-components";
 import { HorizontalScroll } from "components/horizontalScroll";
 import { HOW_WE_DO_IT_CARDS } from "./carousel.constants";
@@ -45,8 +47,9 @@ export const Carousel = () => {
   };
 
   useEffect(() => {
-    handleDynamicHeight(ContainerRef, setDynamicHeight);
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
 
   return (

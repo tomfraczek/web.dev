@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { isMobile } from "theme/media";
 
 import { Highlighted } from "components/offerCards/offerCards.styles";
 import { Container } from "theme/global-styles";
@@ -19,7 +20,9 @@ import {
 
 export const Support = () => {
   useEffect(() => {
-    AOS.init();
+    if (!isMobile()) {
+      AOS.init();
+    }
   }, []);
   return (
     <Container data-aos="fade-right">
