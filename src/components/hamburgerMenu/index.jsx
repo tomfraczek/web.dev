@@ -66,7 +66,7 @@ const BackgroundContainer = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   overflow: hidden;
   z-index: -1;

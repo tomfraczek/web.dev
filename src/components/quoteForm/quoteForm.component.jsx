@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { InputSlider } from "./slider.component";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import { styled } from "@mui/material/styles";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
 import Checkbox from "@mui/material/Checkbox";
 import Switch from "@mui/material/Switch";
+import TextField from "@mui/material/TextField";
 // import { Button } from "components/button";
 import {
   ButtonsContainer,
@@ -18,6 +20,15 @@ import {
   DescriptionTitle,
   DescriptionContent,
   InputTitle,
+  InputValue,
+  InputNotification,
+  SliderWrapper,
+  InputValueContainer,
+  ContactInput,
+  PrefixInput,
+  InputWrapper,
+  BasicInfoInputContainer,
+  PhoneNumberInput,
 } from "./quoteForm.styles";
 import { color } from "theme";
 
@@ -105,13 +116,22 @@ export const QuoteForm = () => {
 
   // console.log(watch("example")); // watch input value by passing the name of it
   const [value, setValue] = useState(3);
-  const [rangeValue, setRangeValue] = useState([2000, 3000]);
+  const [rangeValue, setRangeValue] = useState([3000, 7000]);
   const [internationalization, setInternationalization] = useState(false);
-  const [languagesNo, setLangguagesNo] = useState(1);
+  const [languagesNo, setLangguagesNo] = useState(3);
   const [cms, setCms] = useState(false);
   const [hosting, setHosting] = useState(false);
   const [content, setContent] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [prefix, setPrefix] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  useEffect(() => {
+    console.log(rangeValue);
+  }, [rangeValue]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -128,19 +148,6 @@ export const QuoteForm = () => {
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    // setValue(event.target.value === "" ? "" : Number(event.target.value));
-  };
-
-  // const handleBlur = () => {
-  //   if (value < 0) {
-  //     setValue(0);
-  //   } else if (value > 100) {
-  //     setValue(100);
-  //   }
-  // };
 
   const handleChange = (event, newValue) => {
     setRangeValue(newValue);
@@ -166,7 +173,7 @@ export const QuoteForm = () => {
 
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
-          <StepLabel>basic information</StepLabel>
+          <StepLabel>Basic Information</StepLabel>
           <StepContent>
             <ContentContainer>
               <ContentPart>
@@ -190,126 +197,218 @@ export const QuoteForm = () => {
                       www.yoursite.com/about-us.
                     </DescriptionContent>
                   </InputDescription>
-                  <InputContainer>
-                    <InputTitle>how many sub-pages</InputTitle>
+                  <BasicInfoInputContainer>
+                    <InputTitle>Subpages Number</InputTitle>
                     <Slider
-                      min={1}
+                      min={0}
                       max={25}
                       value={value}
                       onChange={handleSliderChange}
                       aria-labelledby="input-slider"
                     />
-                    <div>{value}</div>
-                  </InputContainer>
+                    <InputValue>{value}</InputValue>
+                    <InputNotification>
+                      {value === 0 && (
+                        <InputTitle>Landing page only</InputTitle>
+                      )}
+                    </InputNotification>
+                  </BasicInfoInputContainer>
                 </BoxWrapper>
 
-                <InputContainer>
-                  <Typography>Internationalization?</Typography>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={internationalization}
-                    exclusive
-                    aria-label="Platform"
-                  >
-                    <ToggleButton
-                      value={true}
-                      onClick={() => setInternationalization(true)}
+                <BoxWrapper>
+                  <InputDescription>
+                    <DescriptionTitle>Internationalization</DescriptionTitle>
+                    <DescriptionContent>
+                      Internationalization is the process of designing a
+                      software application so that it can be adapted to various
+                      languages and regions without engineering changes.
+                    </DescriptionContent>
+                    <DescriptionContent>
+                      Localization is the process of adapting internationalized
+                      software for a specific region or language by translating
+                      text and adding locale-specific components.
+                    </DescriptionContent>
+                  </InputDescription>
+
+                  <BasicInfoInputContainer>
+                    <InputTitle>Internationalization?</InputTitle>
+                    <ToggleButtonGroup
+                      // style={{ margin: "0 auto" }}
+                      color="primary"
+                      value={internationalization}
+                      exclusive
+                      aria-label="Platform"
                     >
-                      Yes
-                    </ToggleButton>
-                    <ToggleButton
-                      value={false}
-                      onClick={() => setInternationalization(false)}
+                      <ToggleButton
+                        value={true}
+                        onClick={() => setInternationalization(true)}
+                      >
+                        Yes
+                      </ToggleButton>
+                      <ToggleButton
+                        value={false}
+                        onClick={() => setInternationalization(false)}
+                      >
+                        No
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+
+                    <SliderWrapper
+                      style={{
+                        marginTop: "24px",
+                        opacity: internationalization ? "1" : "0",
+                      }}
                     >
-                      No
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                  {internationalization && (
-                    <>
-                      <Typography>How many languages to support?</Typography>
+                      <InputTitle>How many languages to support?</InputTitle>
                       <Slider
+                        style={{ marginTop: "24px" }}
                         min={1}
                         max={25}
                         value={languagesNo}
                         onChange={handleLanguagesNo}
                         aria-labelledby="input-slider"
                       />
-                      <div>{languagesNo}</div>
-                    </>
-                  )}
-                </InputContainer>
 
-                <InputContainer>
-                  <Typography>CMS - Content Menagement System?</Typography>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={cms}
-                    exclusive
-                    aria-label="Platform"
-                  >
-                    <ToggleButton value={true} onClick={() => setCms(true)}>
-                      Yes
-                    </ToggleButton>
-                    <ToggleButton value={false} onClick={() => setCms(false)}>
-                      No
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </InputContainer>
+                      <InputValue>{languagesNo}</InputValue>
+                    </SliderWrapper>
+                  </BasicInfoInputContainer>
+                </BoxWrapper>
 
-                <InputContainer>
-                  <Typography>
-                    Should we create the content for your website?
-                  </Typography>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={content}
-                    exclusive
-                    aria-label="Platform"
-                  >
-                    <ToggleButton value={true} onClick={() => setContent(true)}>
-                      Yes
-                    </ToggleButton>
-                    <ToggleButton
-                      value={false}
-                      onClick={() => setContent(false)}
+                <BoxWrapper>
+                  <InputDescription>
+                    <DescriptionTitle>
+                      Content Menagement System (CMS)
+                    </DescriptionTitle>
+                    <DescriptionContent>
+                      A content management system (CMS) is an application that
+                      is used to manage content, allowing multiple contributors
+                      to create, edit and publish.
+                    </DescriptionContent>
+                    <DescriptionContent>
+                      Content in a CMS is typically stored in a database and
+                      displayed in a presentation layer based on a set of
+                      templates like a website.
+                    </DescriptionContent>
+                  </InputDescription>
+
+                  <BasicInfoInputContainer>
+                    <InputTitle>Content Menagement System (CMS)?</InputTitle>
+                    <ToggleButtonGroup
+                      color="primary"
+                      value={cms}
+                      exclusive
+                      aria-label="Platform"
                     >
-                      No
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </InputContainer>
+                      <ToggleButton value={true} onClick={() => setCms(true)}>
+                        Yes
+                      </ToggleButton>
+                      <ToggleButton value={false} onClick={() => setCms(false)}>
+                        No
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </BasicInfoInputContainer>
+                </BoxWrapper>
 
-                <InputContainer>
-                  <p>Do you need hosting?</p>
-                  <ToggleButtonGroup
-                    color="primary"
-                    value={hosting}
-                    exclusive
-                    aria-label="Platform"
-                  >
-                    <ToggleButton value={true} onClick={() => setHosting(true)}>
-                      Yes
-                    </ToggleButton>
-                    <ToggleButton
-                      value={false}
-                      onClick={() => setHosting(false)}
+                <BoxWrapper>
+                  <InputDescription>
+                    <DescriptionTitle>
+                      Do you need content for your website?
+                    </DescriptionTitle>
+                    <DescriptionContent>
+                      We know how difficult it is to run a business, that's why
+                      we can take the burden of creating content off your
+                      shoulders and you can focus on really important things.
+                    </DescriptionContent>
+                  </InputDescription>
+
+                  <BasicInfoInputContainer>
+                    <InputTitle>
+                      Do you need a content for your website?
+                    </InputTitle>
+                    <ToggleButtonGroup
+                      color="primary"
+                      value={content}
+                      exclusive
+                      aria-label="Platform"
                     >
-                      No
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </InputContainer>
+                      <ToggleButton
+                        value={true}
+                        onClick={() => setContent(true)}
+                      >
+                        Yes
+                      </ToggleButton>
+                      <ToggleButton
+                        value={false}
+                        onClick={() => setContent(false)}
+                      >
+                        No
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </BasicInfoInputContainer>
+                </BoxWrapper>
 
-                <InputContainer>
-                  <p>Whats your budget?</p>
-                  <Slider
-                    value={rangeValue}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    min={250}
-                    max={10000}
-                    //   getAriaValueText={valuetext}
-                  />
-                  <div>{rangeValue}</div>
-                </InputContainer>
+                <BoxWrapper>
+                  <InputDescription>
+                    <DescriptionTitle>Hosting and Domain</DescriptionTitle>
+                    <DescriptionContent>
+                      Domain is the address, which allows a visitor to easily
+                      find your website online, while hosting is where the
+                      website files are stored. In order to have a functioning
+                      website, you need both - a domain and hosting space.
+                    </DescriptionContent>
+                  </InputDescription>
+
+                  <BasicInfoInputContainer>
+                    <InputTitle>Do you need hosting and domain?</InputTitle>
+                    <ToggleButtonGroup
+                      color="primary"
+                      value={hosting}
+                      exclusive
+                      aria-label="Platform"
+                    >
+                      <ToggleButton
+                        value={true}
+                        onClick={() => setHosting(true)}
+                      >
+                        Yes
+                      </ToggleButton>
+                      <ToggleButton
+                        value={false}
+                        onClick={() => setHosting(false)}
+                      >
+                        No
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </BasicInfoInputContainer>
+                </BoxWrapper>
+
+                <BoxWrapper>
+                  <InputDescription>
+                    <DescriptionTitle>The Budged</DescriptionTitle>
+                    <DescriptionContent>
+                      By specifying the budget, you will allow us to tailor the
+                      offer to your needs even better.
+                    </DescriptionContent>
+                  </InputDescription>
+
+                  <BasicInfoInputContainer>
+                    <InputTitle>The Budged</InputTitle>
+                    <Slider
+                      value={rangeValue}
+                      onChange={handleChange}
+                      valueLabelDisplay="auto"
+                      step={100}
+                      min={500}
+                      max={10000}
+                      //   getAriaValueText={valuetext}
+                    />
+                    <InputValueContainer>
+                      <InputValue>{rangeValue[0]}</InputValue>
+                      <span>-</span>
+                      <InputValue>{rangeValue[1]}</InputValue>
+                    </InputValueContainer>
+                  </BasicInfoInputContainer>
+                </BoxWrapper>
               </ContentPart>
               <Box sx={{ mb: 2 }}>
                 <div>
@@ -338,43 +437,52 @@ export const QuoteForm = () => {
           <StepContent>
             <Box sx={{ mb: 2 }}>
               <>
-                <Typography>Name & Surname</Typography>
-                <Input
-                  required
-                  sx={{ mb: 1, fontSize: "var(--joy-fontSize-sm)" }}
-                />
+                <InputWrapper>
+                  <InputContainer>
+                    <InputTitle>First Name</InputTitle>
+                    <ContactInput
+                      value={firstName}
+                      onChange={() => setFirstName(value)}
+                      type="text"
+                    />
+                  </InputContainer>
 
-                <Typography>Email address</Typography>
-                <Input
-                  placeholder="john.doe@example.com"
-                  required
-                  type="email"
-                  sx={{ mb: 1, fontSize: "var(--joy-fontSize-sm)" }}
-                />
+                  <InputContainer>
+                    <InputTitle>Last Name</InputTitle>
+                    <ContactInput
+                      value={lastName}
+                      onChange={() => setLastName(value)}
+                      type="text"
+                    />
+                  </InputContainer>
+                </InputWrapper>
 
-                <Typography>Phone Number</Typography>
-                <Input
-                  placeholder="+48"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  sx={{ mb: 1, fontSize: "var(--joy-fontSize-sm)" }}
-                />
-                <Input
-                  placeholder="000-000-000"
-                  type="text"
-                  inputMode="numeric"
-                  required
-                  sx={{ mb: 1, fontSize: "var(--joy-fontSize-sm)" }}
-                />
+                <InputContainer>
+                  <InputTitle>Email Address</InputTitle>
+                  <ContactInput
+                    type="email"
+                    value={email}
+                    onChange={() => setEmail(value)}
+                  />
+                </InputContainer>
 
-                <Typography>Message</Typography>
-                <Textarea
-                  color="primary"
-                  minRows={2}
-                  size="lg"
-                  variant="solid"
-                />
+                <InputContainer>
+                  <InputTitle>Phone Number</InputTitle>
+                  <InputWrapper>
+                    <PrefixInput
+                      value={prefix}
+                      onChange={(e) => console.log(e.target.value)}
+                      type="text"
+                      placeholder="+48"
+                    />
+                    <PhoneNumberInput
+                      value={phoneNumber}
+                      onChange={() => setPhoneNumber(value)}
+                      placeholder="000-000-000"
+                      type="text"
+                    />
+                  </InputWrapper>
+                </InputContainer>
               </>
               <div>
                 <Button
@@ -455,7 +563,11 @@ export const QuoteForm = () => {
           >
             Back
           </Button>
-          <Button color="error" onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+          <Button
+            color="error"
+            onClick={() => setActiveStep(1)}
+            sx={{ mt: 1, mr: 1 }}
+          >
             Cancel
           </Button>
         </Paper>
