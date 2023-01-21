@@ -16,11 +16,6 @@ import { HeaderComponent, HeaderContent } from "./header.styles";
 import { Container } from "../../theme/global-styles";
 
 const width = window.innerWidth;
-const navStyles = {
-  position: "fixed",
-  top: "0",
-  background: "#fff",
-};
 
 export const Header = () => {
   const [hidden, setHidden] = useState(false);
@@ -43,7 +38,7 @@ export const Header = () => {
       setHidden(true);
     }
   };
-  console.log(`${width}px - ${size.laptop}`);
+
   return (
     <Container>
       <HeaderComponent

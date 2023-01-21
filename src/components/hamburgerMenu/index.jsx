@@ -101,7 +101,7 @@ export function HamburgerMenu() {
   };
 
   useEffect(() => {
-    if (document.body.style.overflowY !== "hidden") {
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflowY = "scroll";
