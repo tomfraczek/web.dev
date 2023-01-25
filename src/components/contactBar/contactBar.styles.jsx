@@ -5,10 +5,9 @@ import { device } from "theme/media";
 import { heading1, paragraph1 } from "theme/typography";
 
 export const ContactBarContainer = styled.div`
-  width: 90%;
+  width: 100%;
   height: 250px;
   background: ${logoBlue};
-  border-radius: 0 150px 150px 0;
   display: flex;
   flex-direction: column;
   margin-top: 8rem;

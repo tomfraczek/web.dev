@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Header } from "components/header";
 import { Home } from "routes/home";
-import { About } from "routes/about";
+import { Career } from "routes/career";
 import { Quote } from "routes/quote";
 import { Contact } from "routes/contact";
 import { Offers } from "routes/offers";
@@ -14,10 +14,10 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/services" element={<Offers />} />
         <Route path="/quote" element={<Quote />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/career" element={<Career />} />
       </Routes>
       <Footer />
     </div>

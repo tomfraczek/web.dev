@@ -46,15 +46,9 @@ export const Carousel = () => {
     setDynamicHeight(dynamicHeight);
   };
 
-  useEffect(() => {
-    if (!isMobile()) {
-      AOS.init();
-    }
-  }, []);
-
   return (
     <>
-      <CarouselContainer data-aos={!isMobile() && "fade-left"}>
+      <CarouselContainer>
         <Main>
           <HorizontalSection>
             <HorizontalScroll>

@@ -29,6 +29,12 @@ import {
   InputWrapper,
   BasicInfoInputContainer,
   PhoneNumberInput,
+  SummaryAnswer,
+  SummaryQuestionsContainer,
+  SummaryContainer,
+  ValInputContainer,
+  InputError,
+  Text,
 } from "./quoteForm.styles";
 import { color } from "theme";
 
@@ -42,8 +48,15 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-
 import Stack from "@mui/material/Stack";
+
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import { logoRed } from "theme/color";
 
 //
 
@@ -128,13 +141,23 @@ export const QuoteForm = () => {
   const [email, setEmail] = useState("");
   const [prefix, setPrefix] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-
-  useEffect(() => {
-    console.log(rangeValue);
-  }, [rangeValue]);
+  const [emailError, setEmailError] = useState(false);
+  const [prefixError, setPrefixError] = useState(false);
+  const [phoneNoError, setPhoneNoError] = useState(false);
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    emailValidate();
+    firstNameValidate();
+    lastNameValidate();
+    phoneNoValidate();
+    prefixNoValidate();
+
+    console.log(contactsEmpty, contactErrors);
+
+    if (!contactErrors && !contactsEmpty)
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
@@ -153,17 +176,71 @@ export const QuoteForm = () => {
     setRangeValue(newValue);
   };
 
-  const handleInternationalization = () => {
-    setInternationalization((prevState) => !prevState);
-  };
-
   const handleLanguagesNo = (e) => {
     setLangguagesNo(e.target.value);
   };
 
-  const handleCms = (e) => {
-    setCms((prevState) => !prevState);
+  const emailValidate = () => {
+    const regexp = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (regexp.exec(email) === null) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
   };
+
+  const prefixNoValidate = () => {
+    const regexp = /\+[0-9]+$/;
+    if (regexp.exec(prefix) === null) {
+      setPrefixError(true);
+    } else {
+      setPrefixError(false);
+    }
+  };
+
+  const firstNameValidate = () => {
+    const regexp = /^[a-z ,.'-]+$/i;
+    // console.log(regexp, regexp.exec(phoneNumber) === null);
+    if (regexp.exec(firstName) === null) {
+      setFirstNameError(true);
+    } else {
+      setFirstNameError(false);
+    }
+  };
+
+  const lastNameValidate = () => {
+    const regexp = /^[a-z ,.'-]+$/i;
+    // console.log(regexp, regexp.exec(phoneNumber) === null);
+    if (regexp.exec(lastName) === null) {
+      setLastNameError(true);
+    } else {
+      setLastNameError(false);
+    }
+  };
+
+  const phoneNoValidate = () => {
+    const regexp = /[0-9]+$/;
+
+    if (regexp.exec(phoneNumber) === null) {
+      setPhoneNoError(true);
+    } else {
+      setPhoneNoError(false);
+    }
+  };
+
+  const contactErrors =
+    emailError ||
+    prefixError ||
+    phoneNoError ||
+    firstNameError ||
+    lastNameError;
+
+  const contactsEmpty =
+    firstName === "" ||
+    lastName === "" ||
+    email === "" ||
+    prefix === "" ||
+    phoneNumber === "";
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
@@ -414,17 +491,12 @@ export const QuoteForm = () => {
                 <div>
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={() =>
+                      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+                    }
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    {activeStep === 3 - 1 ? "Finish" : "Continue"}
-                  </Button>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    Back
+                    Continue
                   </Button>
                 </div>
               </Box>
@@ -440,48 +512,91 @@ export const QuoteForm = () => {
                 <InputWrapper>
                   <InputContainer>
                     <InputTitle>First Name</InputTitle>
-                    <ContactInput
-                      value={firstName}
-                      onChange={() => setFirstName(value)}
-                      type="text"
-                    />
+                    <ValInputContainer>
+                      <ContactInput
+                        value={firstName}
+                        style={{ borderColor: firstNameError && logoRed }}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        onBlur={firstNameValidate}
+                        type="text"
+                      />
+                      <InputError>
+                        {firstNameError &&
+                          "Enter valid first name - characters 'A - Z'"}
+                      </InputError>
+                    </ValInputContainer>
                   </InputContainer>
 
                   <InputContainer>
                     <InputTitle>Last Name</InputTitle>
-                    <ContactInput
-                      value={lastName}
-                      onChange={() => setLastName(value)}
-                      type="text"
-                    />
+                    <ValInputContainer>
+                      <ContactInput
+                        value={lastName}
+                        style={{ borderColor: lastNameError && logoRed }}
+                        onBlur={lastNameValidate}
+                        onChange={(e) => setLastName(e.target.value)}
+                        type="text"
+                      />
+                      <InputError>
+                        {lastNameError &&
+                          "Enter valid last name - characters 'A - Z'"}
+                      </InputError>
+                    </ValInputContainer>
                   </InputContainer>
                 </InputWrapper>
 
                 <InputContainer>
                   <InputTitle>Email Address</InputTitle>
-                  <ContactInput
-                    type="email"
-                    value={email}
-                    onChange={() => setEmail(value)}
-                  />
+                  <ValInputContainer>
+                    <ContactInput
+                      style={{ borderColor: emailError && logoRed }}
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onBlur={emailValidate}
+                    />
+                    <InputError>
+                      {emailError &&
+                        "Enter valid email address - example@email.com"}
+                    </InputError>
+                  </ValInputContainer>
                 </InputContainer>
 
                 <InputContainer>
                   <InputTitle>Phone Number</InputTitle>
-                  <InputWrapper>
-                    <PrefixInput
-                      value={prefix}
-                      onChange={(e) => console.log(e.target.value)}
-                      type="text"
-                      placeholder="+48"
-                    />
-                    <PhoneNumberInput
-                      value={phoneNumber}
-                      onChange={() => setPhoneNumber(value)}
-                      placeholder="000-000-000"
-                      type="text"
-                    />
-                  </InputWrapper>
+                  <ValInputContainer>
+                    <InputWrapper>
+                      <PrefixInput
+                        value={prefix}
+                        style={{ borderColor: prefixError && logoRed }}
+                        onChange={(e) => setPrefix(e.target.value)}
+                        onBlur={(e) => prefixNoValidate(e.target.value)}
+                        type="text"
+                        placeholder="+48"
+                      />
+                      <PhoneNumberInput
+                        value={phoneNumber}
+                        style={{ borderColor: phoneNoError && logoRed }}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        onBlur={phoneNoValidate}
+                        placeholder="123456789"
+                        type="text"
+                      />
+                    </InputWrapper>
+                    <InputError>
+                      {prefixError && (
+                        <span>
+                          Prefix Number: Please use numbers [0 - 9] and '+' sign
+                          for prefix only
+                        </span>
+                      )}
+                      {phoneNoError && (
+                        <span>
+                          Phone Number: Please use numbers [0 - 9] only
+                        </span>
+                      )}
+                    </InputError>
+                  </ValInputContainer>
                 </InputContainer>
               </>
               <div>
@@ -490,13 +605,9 @@ export const QuoteForm = () => {
                   onClick={handleNext}
                   sx={{ mt: 1, mr: 1 }}
                 >
-                  {activeStep === 3 - 1 ? "Finish" : "Continue"}
+                  Continue
                 </Button>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mt: 1, mr: 1 }}
-                >
+                <Button onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
                   Back
                 </Button>
               </div>
@@ -506,69 +617,220 @@ export const QuoteForm = () => {
 
         <Step>
           <StepLabel>Summary</StepLabel>
-          <StepContent>
+          <StepContent sx={{ p: 4 }}>
             <Box sx={{ mb: 2 }}>
               <Stack spacing={2}>
-                <Item elevation={12}>
-                  You need your website to have {value} pages
+                <Item
+                  elevation={12}
+                  sx={{ pb: "26px" }}
+                  style={{ textAlign: "right" }}
+                >
+                  <DescriptionTitle
+                    style={{
+                      textAlign: "left",
+                      marginTop: "20px",
+                      marginLeft: "16px",
+                    }}
+                  >
+                    Personal Information
+                  </DescriptionTitle>
+                  <TableContainer sx={{ textAlign: "right" }}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Name</TableCell>
+                          <TableCell align="left">Answer</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            First name & Last Name
+                          </TableCell>
+                          <TableCell align="left">{`${firstName} ${lastName}`}</TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Email Address
+                          </TableCell>
+                          <TableCell align="left">{email}</TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Phone Number
+                          </TableCell>
+                          <TableCell align="left">
+                            {`${prefix} ${phoneNumber}`}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <Button
+                    variant="contained"
+                    onClick={() => setActiveStep(1)}
+                    sx={{ mt: 2, ml: "auto" }}
+                  >
+                    Edit
+                  </Button>
                 </Item>
-                <Item elevation={12}>
-                  You {internationalization ? "do" : "don't"} need
-                  internationalize your website.{" "}
-                  {internationalization &&
-                    `You required ${languagesNo} languages to cover.`}
+
+                <Item
+                  elevation={12}
+                  sx={{ pb: "26px" }}
+                  style={{ textAlign: "right" }}
+                >
+                  <DescriptionTitle
+                    style={{
+                      textAlign: "left",
+                      marginTop: "20px",
+                      marginLeft: "16px",
+                    }}
+                  >
+                    Your requirements
+                  </DescriptionTitle>
+                  <TableContainer sx={{ textAlign: "right" }}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Name</TableCell>
+                          <TableCell align="left">Answer</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Number of Subpages
+                          </TableCell>
+                          <TableCell align="left">{value}</TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Internationalization
+                          </TableCell>
+                          <TableCell align="left">
+                            {internationalization ? "Yes" : "No"}
+                          </TableCell>
+                        </TableRow>
+
+                        {internationalization && (
+                          <TableRow
+                            sx={{
+                              "&:last-child td, &:last-child th": { border: 0 },
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              Languages supported
+                            </TableCell>
+                            <TableCell align="left">{languagesNo}</TableCell>
+                          </TableRow>
+                        )}
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Content Menagment System (CMS)
+                          </TableCell>
+                          <TableCell align="left">
+                            {cms ? "Yes" : "No"}
+                          </TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Content for your website
+                          </TableCell>
+                          <TableCell align="left">
+                            {content ? "Yes" : "No"}
+                          </TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Hosting & Server
+                          </TableCell>
+                          <TableCell align="left">
+                            {content ? "Yes" : "No"}
+                          </TableCell>
+                        </TableRow>
+
+                        <TableRow
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell component="th" scope="row">
+                            Your budged
+                          </TableCell>
+                          <TableCell align="left">
+                            {`${rangeValue[0]} - ${rangeValue[1]}`}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <Button
+                    variant="contained"
+                    onClick={() => setActiveStep(0)}
+                    sx={{ mt: 2, ml: "auto" }}
+                  >
+                    Edit
+                  </Button>
                 </Item>
-                <Item elevation={12}>
-                  You {cms ? "do" : "don't"} need CMS for your website.
-                </Item>
-                <Item elevation={12}>
-                  You {content ? "do" : "don't"} want us to create content for
-                  your website.
-                </Item>
-                <Item elevation={12}>
-                  You {hosting ? "do" : "don't"} need hosting for you website.
-                </Item>
-                <Item elevation={12}>Your budged is {rangeValue}.</Item>
               </Stack>
             </Box>
           </StepContent>
         </Step>
       </Stepper>
       {activeStep === 2 && (
-        <Paper square elevation={0} sx={{ p: 3 }}>
-          <Typography>All steps completed - you&apos;re finished.</Typography>
-          <Typography>
-            If you entered correct data submit the quote. If You want to change
-            your data please go back and correct data.
-          </Typography>
+        <Paper square elevation={0} sx={{ p: 3, ml: 2 }}>
+          <Text>Congratulation, you completed the form!</Text>
+          <Text>
+            Check the porvided information, correct them if needed and
+            you&apos;re ready to go!
+          </Text>
+          <Text>Submit the form and our tem will contact you shortly.</Text>
+
           <Button
             variant="contained"
             onClick={handleReset}
             sx={{ mt: 1, mr: 1 }}
           >
             Submit
-          </Button>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={handleReset}
-            sx={{ mt: 1, mr: 1 }}
-          >
-            Reset and start over
-          </Button>
-          <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            sx={{ mt: 1, mr: 1 }}
-          >
-            Back
-          </Button>
-          <Button
-            color="error"
-            onClick={() => setActiveStep(1)}
-            sx={{ mt: 1, mr: 1 }}
-          >
-            Cancel
           </Button>
         </Paper>
       )}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color } from "theme";
 import { logoRed } from "theme/color";
 import { device } from "theme/media";
 import {
@@ -141,4 +142,41 @@ export const InputWrapper = styled.div`
 `;
 export const PhoneNumberInput = styled(ContactInput)`
   width: 215px;
+`;
+
+export const SummaryAnswer = styled(InputTitle)``;
+
+export const SummaryQuestionsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SummaryContainer = styled.div`
+  display: flex;
+`;
+
+export const ValInputContainer = styled.div``;
+
+export const InputError = styled.p`
+  color: ${color.logoRed};
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  text-align: left;
+  margin: 3px 0px 0px;
+  min-height: 20px;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: ${color.logoRed};
+    min-height: 20px;
+  }
+`;
+
+export const Text = styled.p`
+  ${paragraph1}
+  margin: 0 0 10px;
+  text-align: center;
 `;

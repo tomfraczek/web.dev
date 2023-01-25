@@ -8,7 +8,6 @@ export const FooterContainer = styled.div`
   flex-direction: row;
   /* align-items: center; */
   justify-content: space-evenly;
-  margin-top: 5rem;
   padding: 2rem 0 1rem 0;
 `;
 
