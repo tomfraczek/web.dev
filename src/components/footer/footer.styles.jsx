@@ -9,6 +9,10 @@ export const FooterContainer = styled.div`
   /* align-items: center; */
   justify-content: space-evenly;
   padding: 2rem 0 1rem 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 export const Copyright = styled.p`

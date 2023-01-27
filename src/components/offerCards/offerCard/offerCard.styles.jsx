@@ -61,7 +61,6 @@ export const List = styled.ul``;
 
 export const ListItem = styled.li`
   margin-bottom: 1rem;
-  font-weight: 600;
   color: ${color.logoBlue};
   text-align: center;
 

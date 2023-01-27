@@ -109,6 +109,8 @@ export const InputNotification = styled.p`
 export const SliderWrapper = styled.div`
   min-height: 45px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const InputValueContainer = styled.div`
@@ -140,6 +142,7 @@ export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const PhoneNumberInput = styled(ContactInput)`
   width: 215px;
 `;

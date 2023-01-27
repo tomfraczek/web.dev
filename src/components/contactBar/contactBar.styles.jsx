@@ -5,18 +5,17 @@ import { device } from "theme/media";
 import { heading1, paragraph1 } from "theme/typography";
 
 export const ContactBarContainer = styled.div`
-  width: 100%;
-  height: 250px;
   background: ${logoBlue};
-  display: flex;
-  flex-direction: column;
   margin-top: 8rem;
 `;
 
 export const ContentContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  height: 300px;
   margin-left: 20px;
   * {
     margin: 7px 0;

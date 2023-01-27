@@ -29,7 +29,7 @@ i18n
               part2: "\nyour website",
             },
             description:
-              "Storyblok is the headless content management system that empowers 99,000 + developers and content teams to create better content experiences across any digital channel.",
+              "Unlock the full potential of your online presence with expert website development. Our team of skilled developers will work with you to create a custom website tailored to your business' unique needs. From design to launch, we'll guide you every step of the way to ensure that your website not only looks great but also functions perfectly. Take the first step towards a successful online presence today and contact us to start building your dream website!",
           },
           word_carousel: {
             grow: "grow",

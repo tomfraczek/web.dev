@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { device } from "theme/media";
 import { MenuToggle } from "./menuToggle.component";
 import { NavMenu } from "./navMenu.component";
+import { OverlayContext } from "theme/context";
+import { useContext } from "react";
 
 const HamburgerMenuContainer = styled.div`
   display: flex;
@@ -95,8 +97,10 @@ export function HamburgerMenu() {
   const [isOpen, setOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setOpen);
+  const { value, setValue } = useContext(OverlayContext);
 
   const toggleMenu = () => {
+    setValue(!isOpen);
     setOpen(!isOpen);
   };
 
@@ -110,11 +114,6 @@ export function HamburgerMenu() {
 
   return (
     <>
-      <BackgroundContainer
-        style={{ zIndex: isOpen ? 10 : -1, width: !isOpen && "0" }}
-        isOpen={isOpen}
-      />
-
       <HamburgerMenuContainer ref={wrapperRef}>
         <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
         <MenuContainer

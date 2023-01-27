@@ -36,13 +36,13 @@ export const OfferCard = ({
       <CardHeader>
         <CardTitle>{title}</CardTitle>
 
-        <Price>
+        {/* <Price>
           <PriceTitle>from</PriceTitle>
           <PriceContainer>
             <OldPrice>{oldPrice}$</OldPrice>
             <NewPrice>{newPrice}$</NewPrice>
           </PriceContainer>
-        </Price>
+        </Price> */}
 
         {/* <TopDescription>{headDescription}</TopDescription> */}
       </CardHeader>
@@ -61,7 +61,7 @@ export const OfferCard = ({
           </AwardContainer>
         )}
 
-        <Button>Select</Button>
+        <Button>Read more</Button>
       </CardBody>
     </Card>
   );

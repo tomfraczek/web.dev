@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
 import { styled } from "@mui/material/styles";
 import Slider from "@mui/material/Slider";
 import MuiInput from "@mui/material/Input";
-import Checkbox from "@mui/material/Checkbox";
 import Switch from "@mui/material/Switch";
-import TextField from "@mui/material/TextField";
-// import { Button } from "components/button";
 import {
   ButtonsContainer,
   Textarea,
@@ -45,7 +41,6 @@ import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Stack from "@mui/material/Stack";
@@ -57,6 +52,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { logoRed } from "theme/color";
+import { HighlightRed } from "theme/media";
 
 //
 
@@ -153,8 +149,6 @@ export const QuoteForm = () => {
     lastNameValidate();
     phoneNoValidate();
     prefixNoValidate();
-
-    console.log(contactsEmpty, contactErrors);
 
     if (!contactErrors && !contactsEmpty)
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -477,7 +471,6 @@ export const QuoteForm = () => {
                       step={100}
                       min={500}
                       max={10000}
-                      //   getAriaValueText={valuetext}
                     />
                     <InputValueContainer>
                       <InputValue>{rangeValue[0]}</InputValue>
@@ -511,9 +504,12 @@ export const QuoteForm = () => {
               <>
                 <InputWrapper>
                   <InputContainer>
-                    <InputTitle>First Name</InputTitle>
+                    <InputTitle>
+                      First Name<HighlightRed>*</HighlightRed>
+                    </InputTitle>
                     <ValInputContainer>
                       <ContactInput
+                        placeholder="e.g., John"
                         value={firstName}
                         style={{ borderColor: firstNameError && logoRed }}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -528,10 +524,13 @@ export const QuoteForm = () => {
                   </InputContainer>
 
                   <InputContainer>
-                    <InputTitle>Last Name</InputTitle>
+                    <InputTitle>
+                      Last Name<HighlightRed>*</HighlightRed>
+                    </InputTitle>
                     <ValInputContainer>
                       <ContactInput
                         value={lastName}
+                        placeholder="Smith"
                         style={{ borderColor: lastNameError && logoRed }}
                         onBlur={lastNameValidate}
                         onChange={(e) => setLastName(e.target.value)}
@@ -551,13 +550,14 @@ export const QuoteForm = () => {
                     <ContactInput
                       style={{ borderColor: emailError && logoRed }}
                       type="email"
+                      placeholder="name@company.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       onBlur={emailValidate}
                     />
                     <InputError>
                       {emailError &&
-                        "Enter valid email address - example@email.com"}
+                        "Enter valid email address - name@company.com"}
                     </InputError>
                   </ValInputContainer>
                 </InputContainer>

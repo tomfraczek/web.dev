@@ -13,6 +13,7 @@ export const HeroContainer = styled.div`
 
 export const ContentContainer = styled.div`
   display: flex;
+  width: 60%;
   flex-direction: column;
 `;
 export const ContentHeader = styled.h1`
@@ -54,6 +55,7 @@ export const ImageContainer = styled.div`
   display: none;
   @media ${device.tablet} {
     display: block;
+    width: 90%;
   }
 `;
 

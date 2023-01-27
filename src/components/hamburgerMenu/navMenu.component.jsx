@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { color } from "theme";
 import { useTranslation } from "react-i18next";
-import { OFFERS } from "theme/constants";
+import { OFFERS } from "components/offerCards/offerCards.constants";
 import { MAIN_NAVIGATION, LNGS } from "./navMenu.constants";
 import { device } from "theme/media";
 

@@ -35,11 +35,17 @@ export const Support = () => {
             Post<Highlighted>Production</Highlighted>Support
           </Header>
           <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            efficitur imperdiet congue. Praesent id eros purus. Quisque dictum
-            ornare nibh eu scelerisque. Aliquam lacinia, sem ac aliquam posuere,
-            sapien tellus aliquam diam, in imperdiet nunc orci sit amet turpis.
-            Maecenas enim mi, posuere sed mauris et, pharetra varius neque.
+            Website support and maintenance is essential to ensure that your
+            website stays up-to-date, secure, and fully functional. Our team
+            offers a range of support and maintenance services to help you keep
+            your website running smoothly. This includes regular updates and
+            backups, security monitoring, and performance optimization. We also
+            offer troubleshooting and bug fixing services to address any issues
+            that may arise. Additionally, we can provide training and support
+            for content updates, so you can easily make changes to your website.
+            Regular maintenance and support will help ensure that your website
+            is always performing at its best, and that it stays secure from any
+            potential threats.
           </Description>
         </ContentContainer>
         <ImageContainer>

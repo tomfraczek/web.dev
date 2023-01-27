@@ -5,10 +5,6 @@ import { config } from "react-spring";
 import { Button } from "components/button";
 
 import Medal1 from "./img/medal.png";
-import Medal2 from "./img/medal2.png";
-import Cyborg from "./img/cyborg.png";
-import Shapes from "./img/shapes.png";
-import Rocket from "./img/rocket.png";
 
 import {
   OfferContainer,

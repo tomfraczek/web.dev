@@ -15,21 +15,21 @@ import {
 } from "./contactBar.styles";
 
 export const ContactBar = () => {
-  useEffect(() => {
-    if (!isMobile()) {
-      AOS.init();
-    }
-  }, []);
   return (
-    <ContactBarContainer data-aos={!isMobile() && "fade-left"}>
+    <ContactBarContainer>
       <Container>
         <ContentContainer>
           <ContentHeader>Request a free quote</ContentHeader>
           <ContentParagraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            eget risus commodo arcu sollicitudin dignissim. Praesent sed arcu
-            elit. Nunc porta, lorem eu imperdiet tincidunt, leo diam sodales
-            mauris, at ullamcorper massa quam a erat.
+            If you're interested in receiving a free quote for a product or
+            service, one option is to fill out a form or contact us via contact
+            form.
+          </ContentParagraph>
+          <ContentParagraph>
+            It's important to provide accurate and complete information so that
+            the company can provide an accurate quote. Once you've submitted the
+            form, a representative from the company should contact you with the
+            quote, usually within 24 to 48 hours.
           </ContentParagraph>
           <CtaContainer>
             <Button secondary>Request a Quote</Button>

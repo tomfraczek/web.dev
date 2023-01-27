@@ -13,7 +13,7 @@ import {
 } from "./offerCards.styles";
 import { OfferCard } from "./offerCard";
 import { Container } from "theme/global-styles";
-import { OFFERS } from "theme/constants";
+import { OFFERS } from "components/offerCards/offerCards.constants";
 
 export const OfferCards = () => {
   useEffect(() => {
