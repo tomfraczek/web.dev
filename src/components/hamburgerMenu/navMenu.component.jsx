@@ -103,7 +103,7 @@ const CountryIcon = styled(motion.img)`
   }
 `;
 
-export function NavMenu({ isOpen, setOpen }) {
+export function NavMenu({ isOpen, toggleMenu }) {
   const { i18n } = useTranslation();
   const { resolvedLanguage } = i18n;
   return (
@@ -123,7 +123,7 @@ export function NavMenu({ isOpen, setOpen }) {
             },
           }}
         >
-          <MainLogo />
+          <MainLogo toggleMenu={toggleMenu} />
         </NavigationHeader>
         <BodyContainer>
           <NavigationBody>
@@ -160,7 +160,7 @@ export function NavMenu({ isOpen, setOpen }) {
                   }}
                   key={`${title}${url}`}
                 >
-                  <Link to={url} onClick={() => setOpen(false)}>
+                  <Link to={url} onClick={() => toggleMenu(false)}>
                     {title}
                   </Link>
                 </MenuItem>

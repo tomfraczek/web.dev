@@ -29,7 +29,11 @@ const App = () => {
   return (
     <div
       className="App"
-      style={{ paddingBottom: "83px", position: "relative" }}
+      style={{
+        minHeight: "calc(100vh - 281px)",
+        paddingBottom: "131px",
+        position: "relative",
+      }}
     >
       <OverlayContext.Provider value={{ value, setValue }}>
         <Header />

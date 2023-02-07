@@ -10,7 +10,6 @@ export const OfferCardsContainer = styled.div`
 export const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   justify-content: space-between;
 
   /* @media ${device.tablet} {
@@ -20,10 +19,22 @@ export const CardsContainer = styled.div`
 
 export const CardTitle = styled.h3`
   ${heading1}
-  color: ${color.black};
+  color: ${color.white};
   margin-bottom: 2rem;
 `;
 
 export const Highlighted = styled.span`
   color: ${color.logoRed};
+`;
+
+export const OfferDetails = styled.div``;
+
+export const OfferContainer = styled.div`
+  padding-top: 2rem;
+`;
+
+export const BackgroundImage = styled.img`
+  position: absolute;
+  left: 0;
+  width: 100%;
 `;

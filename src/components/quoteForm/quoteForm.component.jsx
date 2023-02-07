@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { set, useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import { styled } from "@mui/material/styles";
 import Slider from "@mui/material/Slider";
@@ -31,6 +31,8 @@ import {
   ValInputContainer,
   InputError,
   Text,
+  ButtonImage,
+  ExpendedToggleButton,
 } from "./quoteForm.styles";
 import { color } from "theme";
 
@@ -44,6 +46,11 @@ import Paper from "@mui/material/Paper";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Stack from "@mui/material/Stack";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import FormControl from "@mui/material/FormControl";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -53,6 +60,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { logoRed } from "theme/color";
 import { HighlightRed } from "theme/media";
+
+import GrowBlack from "components/quoteForm/img/growth.png";
+import NewBlack from "components/quoteForm/img/new.png";
+import GrowColor from "components/quoteForm/img/growthColor.png";
+import NewColor from "components/quoteForm/img/newColor.png";
 
 //
 
@@ -142,6 +154,10 @@ export const QuoteForm = () => {
   const [phoneNoError, setPhoneNoError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
+  const [newWebsiteSrc, setNewWebsiteSrc] = useState(NewBlack);
+  const [upgradeWebsiteSrc, setUpgradeWebsiteSrc] = useState(GrowBlack);
+  const [needWebsite, setNewWebsite] = useState(null);
+  const [needUpgrade, setNeedUpgrade] = useState(false);
 
   const handleNext = () => {
     emailValidate();
@@ -160,6 +176,10 @@ export const QuoteForm = () => {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const handleStart = () => {
+    setActiveStep(1);
   };
 
   const handleSliderChange = (event, newValue) => {
@@ -222,6 +242,20 @@ export const QuoteForm = () => {
     }
   };
 
+  const handleNewWebsite = () => {
+    setNewWebsite(true);
+    setNeedUpgrade(false);
+    setNewWebsiteSrc(NewColor);
+    setUpgradeWebsiteSrc(GrowBlack);
+  };
+
+  const handleUpgradeWebsite = () => {
+    setNewWebsite(false);
+    setNeedUpgrade(true);
+    setUpgradeWebsiteSrc(GrowColor);
+    setNewWebsiteSrc(NewBlack);
+  };
+
   const contactErrors =
     emailError ||
     prefixError ||
@@ -236,6 +270,10 @@ export const QuoteForm = () => {
     prefix === "" ||
     phoneNumber === "";
 
+  useEffect(() => {
+    console.log(needWebsite);
+  }, [needWebsite]);
+
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -244,214 +282,608 @@ export const QuoteForm = () => {
 
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
-          <StepLabel>Basic Information</StepLabel>
+          <StepLabel>Start</StepLabel>
           <StepContent>
             <ContentContainer>
               <ContentPart>
                 <BoxWrapper>
                   <InputDescription>
-                    <DescriptionTitle>Subpages Number</DescriptionTitle>
+                    <DescriptionTitle>What is your main need?</DescriptionTitle>
                     <DescriptionContent>
-                      A subpage on a website is any page on the site other than
-                      the homepage. A page that appears below the top-level
-                      pages in a websites navigation.
+                      The first step in requesting a free quote is a crucial one
+                      as it sets the foundation for the entire project.
                     </DescriptionContent>
                     <DescriptionContent>
-                      These pages often appear in a top navigation bar or
-                      sidebar menu. Think of subpages as “child pages” of the
-                      “parent page.”
-                    </DescriptionContent>
-                    <DescriptionContent>
-                      For example www.yoursite.com/about-us/ would be a subpage
-                      of www.yoursite.com while
-                      www.yoursite.com/about-us/contact is a subpage of
-                      www.yoursite.com/about-us.
+                      Please choose between two options: creating a new website
+                      or upgrading an existing one. Depending on your needs and
+                      goals, one option may be more suitable than the other.
                     </DescriptionContent>
                   </InputDescription>
                   <BasicInfoInputContainer>
-                    <InputTitle>Subpages Number</InputTitle>
-                    <Slider
-                      min={0}
-                      max={25}
-                      value={value}
-                      onChange={handleSliderChange}
-                      aria-labelledby="input-slider"
-                    />
-                    <InputValue>{value}</InputValue>
-                    <InputNotification>
-                      {value === 0 && (
-                        <InputTitle>Landing page only</InputTitle>
-                      )}
-                    </InputNotification>
-                  </BasicInfoInputContainer>
-                </BoxWrapper>
-
-                <BoxWrapper>
-                  <InputDescription>
-                    <DescriptionTitle>Internationalization</DescriptionTitle>
-                    <DescriptionContent>
-                      Internationalization is the process of designing a
-                      software application so that it can be adapted to various
-                      languages and regions without engineering changes.
-                    </DescriptionContent>
-                    <DescriptionContent>
-                      Localization is the process of adapting internationalized
-                      software for a specific region or language by translating
-                      text and adding locale-specific components.
-                    </DescriptionContent>
-                  </InputDescription>
-
-                  <BasicInfoInputContainer>
-                    <InputTitle>Internationalization?</InputTitle>
+                    <InputTitle>How can we help you?</InputTitle>
                     <ToggleButtonGroup
                       // style={{ margin: "0 auto" }}
                       color="primary"
-                      value={internationalization}
+                      value={needWebsite}
                       exclusive
                       aria-label="Platform"
                     >
-                      <ToggleButton
+                      <ExpendedToggleButton
                         value={true}
-                        onClick={() => setInternationalization(true)}
+                        onClick={handleNewWebsite}
+                        onMouseOver={() => setNewWebsiteSrc(NewColor)}
+                        onMouseOut={() => setNewWebsiteSrc(NewBlack)}
                       >
-                        Yes
-                      </ToggleButton>
-                      <ToggleButton
+                        <ButtonImage
+                          src={needWebsite ? NewColor : newWebsiteSrc}
+                          alt="new website"
+                        />
+                        <>I need a new website</>
+                      </ExpendedToggleButton>
+                      <ExpendedToggleButton
                         value={false}
-                        onClick={() => setInternationalization(false)}
+                        onClick={handleUpgradeWebsite}
+                        onMouseOver={() => setUpgradeWebsiteSrc(GrowColor)}
+                        onMouseOut={() => setUpgradeWebsiteSrc(GrowBlack)}
                       >
-                        No
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-
-                    <SliderWrapper
-                      style={{
-                        marginTop: "24px",
-                        opacity: internationalization ? "1" : "0",
-                      }}
-                    >
-                      <InputTitle>How many languages to support?</InputTitle>
-                      <Slider
-                        style={{ marginTop: "24px" }}
-                        min={1}
-                        max={25}
-                        value={languagesNo}
-                        onChange={handleLanguagesNo}
-                        aria-labelledby="input-slider"
-                      />
-
-                      <InputValue>{languagesNo}</InputValue>
-                    </SliderWrapper>
-                  </BasicInfoInputContainer>
-                </BoxWrapper>
-
-                <BoxWrapper>
-                  <InputDescription>
-                    <DescriptionTitle>
-                      Content Menagement System (CMS)
-                    </DescriptionTitle>
-                    <DescriptionContent>
-                      A content management system (CMS) is an application that
-                      is used to manage content, allowing multiple contributors
-                      to create, edit and publish.
-                    </DescriptionContent>
-                    <DescriptionContent>
-                      Content in a CMS is typically stored in a database and
-                      displayed in a presentation layer based on a set of
-                      templates like a website.
-                    </DescriptionContent>
-                  </InputDescription>
-
-                  <BasicInfoInputContainer>
-                    <InputTitle>Content Menagement System (CMS)?</InputTitle>
-                    <ToggleButtonGroup
-                      color="primary"
-                      value={cms}
-                      exclusive
-                      aria-label="Platform"
-                    >
-                      <ToggleButton value={true} onClick={() => setCms(true)}>
-                        Yes
-                      </ToggleButton>
-                      <ToggleButton value={false} onClick={() => setCms(false)}>
-                        No
-                      </ToggleButton>
+                        <ButtonImage
+                          src={needUpgrade ? GrowColor : upgradeWebsiteSrc}
+                          alt="upgrade website"
+                        />
+                        <>I need to upgrade my website</>
+                      </ExpendedToggleButton>
                     </ToggleButtonGroup>
                   </BasicInfoInputContainer>
                 </BoxWrapper>
+              </ContentPart>
+              <Box sx={{ mb: 2 }}>
+                <div>
+                  <Button
+                    variant="contained"
+                    disabled={needWebsite === null}
+                    onClick={() =>
+                      setActiveStep((prevActiveStep) => prevActiveStep + 1)
+                    }
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Continue
+                  </Button>
+                </div>
+              </Box>
+            </ContentContainer>
+            {/* <Box sx={{ mb: 2 }}> */}
+            {/* <> */}
+            {/* <DescriptionTitle>
+                  Free<HighlightRed>Quote</HighlightRed>
+                </DescriptionTitle>
+                <DescriptionContent>
+                  Thank you for your interest in obtaining a free quote. Our
+                  team is dedicated to providing you with the best possible
+                  service and solution for your needs.
+                </DescriptionContent>
 
-                <BoxWrapper>
-                  <InputDescription>
-                    <DescriptionTitle>
-                      Do you need content for your website?
-                    </DescriptionTitle>
-                    <DescriptionContent>
-                      We know how difficult it is to run a business, that's why
-                      we can take the burden of creating content off your
-                      shoulders and you can focus on really important things.
-                    </DescriptionContent>
-                  </InputDescription>
+                <DescriptionContent>
+                  To get started, simply fill out our quote request form and one
+                  of our specialists will be in touch with you shortly. We look
+                  forward to the opportunity to work with you!
+                </DescriptionContent> */}
+            {/* </> */}
+            {/* <div> */}
+            {/* <Button
+                  variant="contained"
+                  onClick={handleStart}
+                  sx={{ mt: 5, mr: 1 }}
+                >
+                  Start
+                </Button>
+              </div>
+            </Box> */}
+          </StepContent>
+        </Step>
+        <Step>
+          <StepLabel>Basic Information</StepLabel>
+          <StepContent>
+            <ContentContainer>
+              <ContentPart>
+                {needWebsite ? (
+                  <>
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>Subpages Number</DescriptionTitle>
+                        <DescriptionContent>
+                          A subpage on a website is any page on the site other
+                          than the homepage. A page that appears below the
+                          top-level pages in a websites navigation.
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          These pages often appear in a top navigation bar or
+                          sidebar menu. Think of subpages as “child pages” of
+                          the “parent page.”
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          For example www.yoursite.com/about-us/ would be a
+                          subpage of www.yoursite.com while
+                          www.yoursite.com/about-us/contact is a subpage of
+                          www.yoursite.com/about-us.
+                        </DescriptionContent>
+                      </InputDescription>
+                      <BasicInfoInputContainer>
+                        <InputTitle>Subpages Number</InputTitle>
+                        <Slider
+                          min={0}
+                          max={25}
+                          value={value}
+                          onChange={handleSliderChange}
+                          aria-labelledby="input-slider"
+                        />
+                        <InputValue>{value}</InputValue>
+                        <InputNotification>
+                          {value === 0 && (
+                            <InputTitle>Landing page only</InputTitle>
+                          )}
+                        </InputNotification>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
 
-                  <BasicInfoInputContainer>
-                    <InputTitle>
-                      Do you need a content for your website?
-                    </InputTitle>
-                    <ToggleButtonGroup
-                      color="primary"
-                      value={content}
-                      exclusive
-                      aria-label="Platform"
-                    >
-                      <ToggleButton
-                        value={true}
-                        onClick={() => setContent(true)}
-                      >
-                        Yes
-                      </ToggleButton>
-                      <ToggleButton
-                        value={false}
-                        onClick={() => setContent(false)}
-                      >
-                        No
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-                  </BasicInfoInputContainer>
-                </BoxWrapper>
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Do you need content for your website?
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          We know how difficult it is to run a business, that's
+                          why we can take the burden of creating content off
+                          your shoulders and you can focus on really important
+                          things.
+                        </DescriptionContent>
+                      </InputDescription>
 
-                <BoxWrapper>
-                  <InputDescription>
-                    <DescriptionTitle>Hosting and Domain</DescriptionTitle>
-                    <DescriptionContent>
-                      Domain is the address, which allows a visitor to easily
-                      find your website online, while hosting is where the
-                      website files are stored. In order to have a functioning
-                      website, you need both - a domain and hosting space.
-                    </DescriptionContent>
-                  </InputDescription>
+                      <BasicInfoInputContainer>
+                        <InputTitle>
+                          Do you need a content for your website?
+                        </InputTitle>
+                        <ToggleButtonGroup
+                          color="primary"
+                          value={content}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setContent(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setContent(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
 
-                  <BasicInfoInputContainer>
-                    <InputTitle>Do you need hosting and domain?</InputTitle>
-                    <ToggleButtonGroup
-                      color="primary"
-                      value={hosting}
-                      exclusive
-                      aria-label="Platform"
-                    >
-                      <ToggleButton
-                        value={true}
-                        onClick={() => setHosting(true)}
-                      >
-                        Yes
-                      </ToggleButton>
-                      <ToggleButton
-                        value={false}
-                        onClick={() => setHosting(false)}
-                      >
-                        No
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-                  </BasicInfoInputContainer>
-                </BoxWrapper>
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Do you need logo/graphics?
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          We know how difficult it is to run a business, that's
+                          why we can take the burden of creating content off
+                          your shoulders and you can focus on really important
+                          things.
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>
+                          Do you need a content for your website?
+                        </InputTitle>
+                        <ToggleButtonGroup
+                          color="primary"
+                          value={content}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setContent(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setContent(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Content Menagement System (CMS)
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          A content management system (CMS) is an application
+                          that is used to manage content, allowing multiple
+                          contributors to create, edit and publish.
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          Content in a CMS is typically stored in a database and
+                          displayed in a presentation layer based on a set of
+                          templates like a website.
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>
+                          Content Menagement System (CMS)?
+                        </InputTitle>
+                        <ToggleButtonGroup
+                          color="primary"
+                          value={cms}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setCms(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setCms(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Internationalization
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          Internationalization is the process of designing a
+                          software application so that it can be adapted to
+                          various languages and regions without engineering
+                          changes.
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          Localization is the process of adapting
+                          internationalized software for a specific region or
+                          language by translating text and adding
+                          locale-specific components.
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>Internationalization?</InputTitle>
+                        <ToggleButtonGroup
+                          // style={{ margin: "0 auto" }}
+                          color="primary"
+                          value={internationalization}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setInternationalization(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setInternationalization(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+
+                        <SliderWrapper
+                          style={{
+                            marginTop: "24px",
+                            opacity: internationalization ? "1" : "0",
+                          }}
+                        >
+                          <InputTitle>
+                            How many languages to support?
+                          </InputTitle>
+                          <Slider
+                            style={{ marginTop: "24px" }}
+                            min={1}
+                            max={25}
+                            value={languagesNo}
+                            onChange={handleLanguagesNo}
+                            aria-labelledby="input-slider"
+                          />
+
+                          <InputValue>{languagesNo}</InputValue>
+                        </SliderWrapper>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>Hosting and Domain</DescriptionTitle>
+                        <DescriptionContent>
+                          Domain is the address, which allows a visitor to
+                          easily find your website online, while hosting is
+                          where the website files are stored. In order to have a
+                          functioning website, you need both - a domain and
+                          hosting space.
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>Do you need hosting and domain?</InputTitle>
+                        <ToggleButtonGroup
+                          color="primary"
+                          value={hosting}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setHosting(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setHosting(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+                  </>
+                ) : (
+                  <>
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Do you use any content management system (CMS)?
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          A content management system (CMS) is an application
+                          that is used to manage content, allowing multiple
+                          contributors to create, edit and publish.
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          Content in a CMS is typically stored in a database and
+                          displayed in a presentation layer based on a set of
+                          templates like a website.
+                        </DescriptionContent>
+
+                        <DescriptionContent>
+                          Examples of content management systems are wordproess,
+                          drupal, joomla, etc
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>CMS in use?</InputTitle>
+                        <ToggleButtonGroup
+                          // style={{ margin: "0 auto" }}
+                          color="primary"
+                          value={internationalization}
+                          exclusive
+                          aria-label="Platform"
+                        >
+                          <ToggleButton
+                            value={true}
+                            onClick={() => setInternationalization(true)}
+                          >
+                            Yes
+                          </ToggleButton>
+                          <ToggleButton
+                            value={false}
+                            onClick={() => setInternationalization(false)}
+                          >
+                            No
+                          </ToggleButton>
+                        </ToggleButtonGroup>
+
+                        <SliderWrapper
+                          style={{
+                            marginTop: "24px",
+                            opacity: internationalization ? "1" : "0",
+                          }}
+                        >
+                          <InputContainer>
+                            <InputTitle>
+                              Name or url of the CMS that you are using
+                              <HighlightRed>*</HighlightRed>
+                            </InputTitle>
+                            <ValInputContainer>
+                              <ContactInput
+                                placeholder="e.g., WordPress or https://wordpress.com/"
+                                value={firstName}
+                                style={{
+                                  borderColor: firstNameError && logoRed,
+                                }}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                onBlur={firstNameValidate}
+                                type="text"
+                              />
+                              <InputError>
+                                {firstNameError &&
+                                  "Enter valid first name - characters 'A - Z'"}
+                              </InputError>
+                            </ValInputContainer>
+                          </InputContainer>
+                        </SliderWrapper>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+
+                    <BoxWrapper>
+                      <InputDescription>
+                        <DescriptionTitle>
+                          Please select the scope of our work
+                        </DescriptionTitle>
+                        <DescriptionContent>
+                          A content management system (CMS) is an application
+                          that is used to manage content, allowing multiple
+                          contributors to create, edit and publish.
+                        </DescriptionContent>
+                        <DescriptionContent>
+                          Content in a CMS is typically stored in a database and
+                          displayed in a presentation layer based on a set of
+                          templates like a website.
+                        </DescriptionContent>
+
+                        <DescriptionContent>
+                          Examples of content management systems are wordproess,
+                          drupal, joomla, etc
+                        </DescriptionContent>
+                      </InputDescription>
+
+                      <BasicInfoInputContainer>
+                        <InputTitle>The scope</InputTitle>
+                        <FormControl
+                          sx={{ m: 3 }}
+                          component="fieldset"
+                          variant="standard"
+                        >
+                          <FormLabel component="legend">Content</FormLabel>
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={gilad}
+                                  onChange={handleChange}
+                                  name="gilad"
+                                />
+                              }
+                              label="Add content"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Edit content"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Remove content"
+                            />
+
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Backup content"
+                            />
+                          </FormGroup>
+                        </FormControl>
+
+                        <FormControl
+                          sx={{ m: 3 }}
+                          component="fieldset"
+                          variant="standard"
+                        >
+                          <FormLabel component="legend">Design</FormLabel>
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={gilad}
+                                  onChange={handleChange}
+                                  name="gilad"
+                                />
+                              }
+                              label="Create a new design"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Upgrade an existing design"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Fix a broken design"
+                            />
+                          </FormGroup>
+                        </FormControl>
+
+                        <FormControl
+                          sx={{ m: 3 }}
+                          component="fieldset"
+                          variant="standard"
+                        >
+                          <FormLabel component="legend">Performance</FormLabel>
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={gilad}
+                                  onChange={handleChange}
+                                  name="gilad"
+                                />
+                              }
+                              label="Media optimisation"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Mobile optymisation"
+                            />
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  // checked={jason}
+                                  onChange={handleChange}
+                                  name="jason"
+                                />
+                              }
+                              label="Loading optimisation"
+                            />
+                          </FormGroup>
+                        </FormControl>
+                      </BasicInfoInputContainer>
+                    </BoxWrapper>
+                  </>
+                )}
 
                 <BoxWrapper>
                   <InputDescription>
@@ -490,6 +922,9 @@ export const QuoteForm = () => {
                     sx={{ mt: 1, mr: 1 }}
                   >
                     Continue
+                  </Button>
+                  <Button onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
+                    Back
                   </Button>
                 </div>
               </Box>

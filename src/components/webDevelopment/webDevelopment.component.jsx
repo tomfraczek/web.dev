@@ -5,10 +5,12 @@ import "aos/dist/aos.css";
 
 import { isMobile } from "theme/media";
 
-import Responsive from "./img/responsive.gif";
-import Earth from "./img/earth.gif";
-import Settings from "./img/settings.gif";
-import Upload from "./img/upload.gif";
+import Responsive from "components/webDevelopment/img/responsive.gif";
+import Earth from "components/webDevelopment/img/earth.gif";
+import Settings from "components/webDevelopment/img/settings.gif";
+import Upload from "components/webDevelopment/img/upload.gif";
+import Landing from "components/webDevelopment/img/landing.gif";
+import Wireframe from "components/webDevelopment/img/wireframe.gif";
 
 import {
   WebDevConteiner,
@@ -28,7 +30,7 @@ const CONTENT = [
   {
     title: "RWD",
     description:
-      "Responsive web design (RWD) is a web development approach that creates dynamic changes to the appearance of a website, depending on the screen size and orientation of the device being used to view it.",
+      "With the increasing use of mobile devices to access the internet, it's essential that websites are optimized for different screen sizes and devices. Our team of designers and developers use RWD techniques to ensure that your website looks and functions great on any device, whether it's a desktop computer, laptop, tablet or smartphone. By providing responsive web design, we ensure that your website visitors have a seamless and consistent experience regardless of the device they use to access your website, and that your website is accessible to the widest possible audience.",
     icon: Responsive,
   },
   {
@@ -53,13 +55,13 @@ const CONTENT = [
     title: "UX Design",
     description:
       "Providing exceptional user experience (UX) design is a crucial aspect of our website development process. Our team of experienced designers work closely with our clients to understand their target audience and business goals, and use this information to create a website that is not only visually appealing, but also intuitive and easy to navigate.",
-    icon: Upload,
+    icon: Landing,
   },
   {
     title: "Optimisation",
     description:
       "Optimized and fast websites is a top priority for our team. We understand the importance of website speed and performance in providing a positive user experience and achieving higher search engine rankings. We employ various techniques such as minification, compression, and caching to optimize the website's code and reduce its load time.",
-    icon: Upload,
+    icon: Wireframe,
   },
   // {
   //   title: "Maintenence",

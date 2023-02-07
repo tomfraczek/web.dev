@@ -10,7 +10,6 @@ export const Card = styled.div`
   margin: 0 12px 16px;
   position: relative;
   border-radius: 0.25rem;
-  height: 500px;
   background-color: ${color.white};
   border: 0 solid ${color.darkBlue};
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -57,15 +56,25 @@ export const Price = styled.div`
   justify-content: center;
 `;
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  margin-bottom: 2rem;
+`;
 
 export const ListItem = styled.li`
   margin-bottom: 1rem;
   color: ${color.logoBlue};
   text-align: center;
+  list-style-type: circle;
+  margin-left: 2rem;
 
   @media ${device.tablet} {
     text-align: left;
+  }
+`;
+
+export const CrossedItem = styled(ListItem)`
+  &:nth-last-child(-n + 2) {
+    text-decoration: line-through;
   }
 `;
 
@@ -112,6 +121,10 @@ export const CardBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  span {
+    margin-top: 2rem;
+  }
 `;
 
 export const Recommmended = styled.img`

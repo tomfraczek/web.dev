@@ -10,6 +10,8 @@ import {
   paragraph2,
 } from "theme/typography";
 
+import ToggleButton from "@mui/material/ToggleButton";
+
 export const Textarea = styled.textarea`
   width: calc(100% - 200px);
   background-color: #fff;
@@ -182,4 +184,13 @@ export const Text = styled.p`
   ${paragraph1}
   margin: 0 0 10px;
   text-align: center;
+`;
+
+export const ButtonImage = styled.img`
+  height: 200px;
+`;
+
+export const ExpendedToggleButton = styled(ToggleButton)`
+  display: flex;
+  flex-direction: column;
 `;

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -42,8 +43,17 @@ export const Hero = () => {
           </ContentHeader>
           <ContentDescription>{t("hero.description")}</ContentDescription>
           <CtaContainer>
-            <Button secondary>{t("links.check_offer")}</Button>
-            <Button>{t("links.contact")}</Button>
+            <Button
+              style={{ marginRight: "15px" }}
+              as={Link}
+              to="/services"
+              secondary
+            >
+              {t("links.check_offer")}
+            </Button>
+            <Button as={Link} to="/contact">
+              {t("links.contact")}
+            </Button>
           </CtaContainer>
         </ContentContainer>
 

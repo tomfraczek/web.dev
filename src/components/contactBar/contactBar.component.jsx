@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -32,8 +33,17 @@ export const ContactBar = () => {
             quote, usually within 24 to 48 hours.
           </ContentParagraph>
           <CtaContainer>
-            <Button secondary>Request a Quote</Button>
-            <Button primary>Contact Us</Button>
+            <Button
+              style={{ marginRight: "15px" }}
+              as={Link}
+              to="/quote"
+              secondary
+            >
+              Request a Quote
+            </Button>
+            <Button as={Link} to="/contact" primary>
+              Contact Us
+            </Button>
           </CtaContainer>
         </ContentContainer>
       </Container>

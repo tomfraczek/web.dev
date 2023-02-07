@@ -1,9 +1,5 @@
 import { Button } from "components/button";
 
-import Medal1 from "components/offerCards/img/medal.png";
-import Medal2 from "components/offerCards/img/medal2.png";
-import Cyborg from "components/offerCards/img/cyborg.png";
-import Shapes from "components/offerCards/img/shapes.png";
 import Rocket from "components/offerCards/img/rocket.png";
 
 import {
@@ -21,6 +17,7 @@ import {
   CardBody,
   Recommmended,
   AwardContainer,
+  CrossedItem,
 } from "./offerCard.styles";
 
 export const OfferCard = ({
@@ -30,27 +27,29 @@ export const OfferCard = ({
   headDescription,
   items,
   recommmended,
+  handleOpen,
+  index,
 }) => {
   return (
-    <Card>
+    <Card onClick={handleOpen}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
 
-        {/* <Price>
+        <Price>
           <PriceTitle>from</PriceTitle>
           <PriceContainer>
             <OldPrice>{oldPrice}$</OldPrice>
             <NewPrice>{newPrice}$</NewPrice>
           </PriceContainer>
-        </Price> */}
+        </Price>
 
         {/* <TopDescription>{headDescription}</TopDescription> */}
       </CardHeader>
 
       <CardBody>
         <List>
-          {items.map((item) => (
-            <ListItem key={item}>{item}</ListItem>
+          {Object.entries(items).map(([key, value]) => (
+            <ListItem key={key}>{key}</ListItem>
           ))}
         </List>
 
@@ -61,7 +60,7 @@ export const OfferCard = ({
           </AwardContainer>
         )}
 
-        <Button>Read more</Button>
+        <span onClick={handleOpen}>More information</span>
       </CardBody>
     </Card>
   );

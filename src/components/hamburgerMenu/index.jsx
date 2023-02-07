@@ -69,7 +69,7 @@ const BackgroundContainer = styled.div`
   width: 100%;
   height: 100%;
   transition: all 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: ${(props) => (props.isOpen ? 1 : 0)};
+  opacity: ${(props) => (props.value ? 1 : 0)};
   overflow: hidden;
   z-index: -1;
 `;
@@ -100,30 +100,30 @@ export function HamburgerMenu() {
   const { value, setValue } = useContext(OverlayContext);
 
   const toggleMenu = () => {
-    setValue(!isOpen);
-    setOpen(!isOpen);
+    setValue(!value);
+    setOpen(!value);
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (value) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflowY = "scroll";
     }
-  }, [isOpen]);
+  }, [value]);
 
   return (
     <>
       <HamburgerMenuContainer ref={wrapperRef}>
-        <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
+        <MenuToggle toggle={toggleMenu} isOpen={value} />
         <MenuContainer
           initial={false}
-          animate={isOpen ? "open" : "closed"}
+          animate={value ? "open" : "closed"}
           variants={menuVariants}
           transition={menuTransition}
         >
           <ContentContainer>
-            <NavMenu isOpen={isOpen} setOpen={setOpen} />
+            <NavMenu isOpen={value} setOpen={toggleMenu} />
           </ContentContainer>
         </MenuContainer>
       </HamburgerMenuContainer>
